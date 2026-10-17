@@ -1,0 +1,1747 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Engineering Beceri Haritası | AI’Han Academy</title>
+<meta name="description" content="AI Engineering becerileri için etkileşimli, iki dilli harita: 4 sütun, 20 beceri, 80 kazanım, ilerleme takibi ve YZ mentör.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5FC; --surface:#FFFFFF; --surface-2:#E8ECFA; --text:#121838; --muted:#555E8C; --line:#D3D9F0;
+  --header-bg:rgba(243,245,252,.82);
+  --p1:#B86E00; --p2:#0B857C; --p3:#5443DB; --p4:#D2335B;
+  --accent:#5443DB; --on-accent:#FFFFFF;
+  --map-a:#FFFFFF; --map-b:#E6EAF8; --star:#9AA6D6;
+  --shadow:0 24px 60px -30px rgba(25,35,90,.35);
+  --font-d:"Unbounded","Segoe UI",system-ui,sans-serif;
+  --font-b:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1330; --surface:#151C42; --surface-2:#1C2552; --text:#E8EBF8; --muted:#9BA4CA; --line:#283266;
+    --header-bg:rgba(13,19,48,.8);
+    --p1:#FFB547; --p2:#4FD1C5; --p3:#A193FF; --p4:#FF6B8B;
+    --accent:#A193FF; --on-accent:#0D1330;
+    --map-a:#1B245E; --map-b:#0D1330; --star:#6C78B8;
+    --shadow:0 30px 80px -30px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1330; --surface:#151C42; --surface-2:#1C2552; --text:#E8EBF8; --muted:#9BA4CA; --line:#283266;
+  --header-bg:rgba(13,19,48,.8);
+  --p1:#FFB547; --p2:#4FD1C5; --p3:#A193FF; --p4:#FF6B8B;
+  --accent:#A193FF; --on-accent:#0D1330;
+  --map-a:#1B245E; --map-b:#0D1330; --star:#6C78B8;
+  --shadow:0 30px 80px -30px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:auto;scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--header-bg);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px)}
+img,svg{max-width:100%}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--header-bg);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.hdr{display:flex;align-items:center;gap:22px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:var(--font-d);font-weight:600;font-size:15px;white-space:nowrap}
+.brand svg{width:30px;height:30px;flex:none}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:8px 12px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s}
+.nav a:hover,.nav a.on{color:var(--text);background:var(--surface-2)}
+.tools{margin-left:auto;display:flex;align-items:center;gap:8px}
+.seg{display:flex;background:var(--surface-2);border-radius:999px;padding:3px}
+.seg button{border:0;background:transparent;padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.icon-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;cursor:pointer;flex:none}
+.icon-btn svg{width:18px;height:18px}
+@media (max-width:900px){.nav{display:none}}
+
+/* Hero */
+.hero{padding:56px 0 12px}
+.hero-top{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px;align-items:end}
+.hero h1{font-family:var(--font-d);font-weight:700;font-size:clamp(34px,6.2vw,72px);line-height:1;letter-spacing:-.025em;margin:0 0 20px;text-wrap:balance}
+.lede{color:var(--muted);font-size:18px;max-width:58ch;margin:0 0 26px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:13px 22px;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;transition:transform .15s,background .2s,opacity .2s}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.ghost{background:var(--surface-2);color:var(--text)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn.small{padding:9px 16px;font-size:14px}
+.meter-box{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px}
+.meter-num{font-family:var(--font-d);font-weight:600;font-size:28px;line-height:1.1;margin:0 0 4px}
+.meter-cap{color:var(--muted);font-size:14px;margin:0 0 16px}
+.segbar{display:flex;gap:4px;height:12px}
+.segbar span{position:relative;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.segbar i{position:absolute;inset:0 auto 0 0;border-radius:999px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:13px;color:var(--muted)}
+.meta-row span{display:inline-flex;align-items:center;gap:7px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none}
+.dot.cloud{background:var(--p2);box-shadow:0 0 0 4px color-mix(in srgb,var(--p2) 22%,transparent)}
+@media (max-width:860px){.hero-top{grid-template-columns:1fr;gap:28px}.hero{padding-top:36px}}
+
+/* Map */
+.map-wrap{position:relative;margin-top:34px;border-radius:30px;border:1px solid var(--line);overflow:hidden;background:radial-gradient(ellipse at 50% 48%,var(--map-a),var(--map-b) 72%);box-shadow:var(--shadow)}
+#map{display:block;width:100%;height:auto;max-height:88vh;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.map-ui{position:absolute;top:16px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;pointer-events:none}
+.map-ui > button{pointer-events:auto}
+.map-hint{pointer-events:none;transition:opacity .3s}
+#map[data-focus] ~ .map-ui .map-hint{opacity:0}
+.map-hint{font-size:13px;color:var(--muted);background:var(--header-bg);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:8px 14px;border-radius:999px;border:1px solid var(--line);max-width:70%}
+#mapReset{display:none}
+#mapReset.on{display:inline-flex}
+.legend{position:absolute;left:16px;bottom:16px;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted);background:var(--header-bg);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:8px 14px;border-radius:16px;border:1px solid var(--line)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.lg{width:12px;height:12px;border-radius:50%;border:2px solid var(--muted)}
+.lg.half{background:linear-gradient(90deg,var(--muted) 50%,transparent 50%)}
+.lg.full{background:var(--muted)}
+.credit{font-size:13px;color:var(--muted);margin:14px 4px 0;max-width:80ch}
+@media (max-width:640px){.map-wrap{border-radius:22px;margin-left:-8px;margin-right:-8px;display:flex;flex-direction:column}.map-ui{position:static;order:-1;padding:12px 12px 0;align-items:center}.map-hint{max-width:100%;font-size:13px;border:0;background:none;padding:2px 4px}#map[data-focus] ~ .map-ui .map-hint{display:none}.legend{position:static;font-size:12px;margin:0 12px 12px;align-self:flex-start}#map{max-height:none}}
+
+/* SVG map styles */
+.m-ring{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 10}
+.m-star{fill:var(--star)}
+.m-trunk{fill:none;stroke-width:3;stroke-linecap:round;opacity:.55}
+.m-branch{fill:none;stroke-width:1.6;stroke-linecap:round;opacity:.4}
+.draw .m-trunk,.draw .m-branch{stroke-dasharray:1;stroke-dashoffset:1}
+.drawn .m-trunk,.drawn .m-branch{transition:stroke-dashoffset 1s cubic-bezier(.6,0,.2,1);stroke-dashoffset:0}
+.m-node{cursor:pointer;transition:opacity .35s}
+.m-node:focus{outline:none}
+.m-node:focus-visible .m-core{stroke-width:5}
+.m-core{transition:fill .35s,r .25s}
+.m-node:hover .m-core{r:19}
+.m-prog{fill:none;stroke-width:4;stroke-linecap:round;transition:stroke-dasharray .5s}
+.m-lbl{font-family:var(--font-b);font-weight:700;font-size:25px;fill:var(--text);paint-order:stroke;stroke:var(--map-b);stroke-width:6px;stroke-linejoin:round}
+.m-plbl{font-family:var(--font-d);font-weight:600;font-size:24px;paint-order:stroke;stroke:var(--map-b);stroke-width:7px;stroke-linejoin:round}
+.m-pct{font-family:var(--font-d);font-weight:600;font-size:20px;fill:var(--text)}
+.m-ctitle{font-family:var(--font-d);font-weight:700;font-size:30px}
+.m-csub{font-family:var(--font-d);font-weight:600;font-size:22px}
+@media (max-width:640px){.m-lbl{font-size:31px;stroke-width:7px}.m-plbl{font-size:28px}}
+.m-pnode{cursor:pointer}
+.m-pnode:focus{outline:none}
+.m-pnode:focus-visible circle.m-pc{stroke-width:6}
+#map[data-focus] .m-node:not(.inf),#map[data-focus] .m-pnode:not(.inf),#map[data-focus] .m-trunk:not(.inf),#map[data-focus] .m-branch:not(.inf){opacity:.12}
+.m-particle{pointer-events:none}
+.m-center-pulse{transform-origin:700px 550px;animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.1;transform:scale(1.18)}}
+@media (prefers-reduced-motion:reduce){.m-center-pulse{animation:none}.drawn .m-trunk,.drawn .m-branch{transition:none}}
+
+/* Sections */
+.block{padding:96px 0 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:end;margin-bottom:28px}
+.sec-head h2{font-family:var(--font-d);font-weight:600;font-size:clamp(26px,3.6vw,42px);line-height:1.08;letter-spacing:-.015em;margin:0 0 12px}
+.sec-head p{color:var(--muted);margin:0;max-width:64ch}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}.block{padding-top:72px}}
+
+/* Skills */
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.search{position:relative;flex:1 1 240px;max-width:360px}
+.search input{width:100%;padding:12px 16px 12px 42px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit;font-size:15px}
+.search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;color:var(--muted);display:inline-flex;align-items:center;gap:8px}
+.chip[aria-pressed="true"]{color:var(--text);border-color:var(--text)}
+.chip .dot{width:9px;height:9px}
+select.sel{padding:10px 36px 10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit;font-size:14px;font-weight:600;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 55%,calc(100% - 13px) 55%;background-size:5px 5px;background-repeat:no-repeat;cursor:pointer;max-width:100%}
+.band{display:grid;grid-template-columns:300px minmax(0,1fr);gap:32px;padding:30px 0;border-top:1px solid var(--line)}
+.band:first-of-type{margin-top:26px}
+.band-head h3{font-family:var(--font-d);font-weight:600;font-size:20px;line-height:1.25;margin:0 0 10px;display:flex;gap:12px;align-items:flex-start}
+.band-head h3 .pn{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:15px;color:var(--bg)}
+.band-head p{color:var(--muted);font-size:15px;margin:0 0 14px}
+.band-head .bp{font-size:13px;font-weight:700;color:var(--muted)}
+.rows{display:flex;flex-direction:column;gap:2px}
+.row{display:grid;grid-template-columns:52px minmax(0,1fr) 120px;gap:16px;align-items:center;padding:14px 16px;border-radius:16px;border:0;background:transparent;text-align:left;width:100%;cursor:pointer;transition:background .2s}
+.row:hover{background:var(--surface)}
+.row .code{font-family:var(--font-d);font-size:14px;font-weight:600}
+.row .rt{font-weight:700;font-size:16px;line-height:1.3;display:block}
+.row .rs{color:var(--muted);font-size:14px;line-height:1.45;display:block;margin-top:3px}
+.row .rm{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.row .rm small{font-size:12px;font-weight:700;color:var(--muted)}
+.bar{width:100%;height:6px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;transition:width .5s}
+.empty{padding:40px 0;color:var(--muted);border-top:1px solid var(--line);margin-top:26px}
+@media (max-width:860px){.band{grid-template-columns:1fr;gap:12px}.row{grid-template-columns:40px minmax(0,1fr);}.row .rm{grid-column:2;align-items:stretch}.row .rs{display:none}}
+
+/* Flow */
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));position:relative;margin-top:8px}
+.flow::before{content:"";position:absolute;left:8%;right:8%;top:27px;height:2px;background:var(--line)}
+.fstep{position:relative;border:0;background:transparent;text-align:center;cursor:pointer;padding:0 10px 18px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.fstep .fn{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-d);font-weight:600;font-size:18px;background:var(--surface);border:2px solid var(--line);transition:background .25s,border-color .25s,color .25s;position:relative;z-index:1}
+.fstep .ft{font-weight:700;font-size:16px}
+.fstep[aria-selected="true"] .fn{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.fpanel{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;margin-top:10px}
+.fpanel h3{font-family:var(--font-d);font-weight:600;font-size:22px;margin:0 0 10px}
+.fpanel p{color:var(--muted);margin:0 0 18px}
+.fpanel ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.fpanel li{display:flex;gap:12px;align-items:flex-start}
+.fpanel li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:9px}
+.rel-title{font-weight:700;font-size:14px;color:var(--muted);margin:0 0 10px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.fnote{color:var(--muted);font-size:14px;margin:18px 0 0}
+@media (max-width:760px){.fpanel{grid-template-columns:1fr;padding:22px}.fstep .ft{font-size:14px}}
+
+/* Profile */
+.profile{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:36px;align-items:center}
+.radar-box{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:18px}
+#radar{display:block;width:100%;height:auto}
+.r-grid{fill:none;stroke:var(--line);stroke-width:1}
+.r-lbl{font-family:var(--font-b);font-weight:700;font-size:18px}
+.r-legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted);padding:4px 8px 6px}
+.r-legend span{display:inline-flex;align-items:center;gap:8px}
+.r-legend i{width:18px;height:4px;border-radius:2px;display:inline-block}
+.sliders{display:flex;flex-direction:column;gap:22px}
+.sl label{display:flex;justify-content:space-between;gap:10px;font-weight:700;font-size:15px;margin-bottom:8px}
+.sl label span:last-child{color:var(--muted);font-weight:600;font-size:14px}
+input[type=range]{width:100%;accent-color:var(--accent);height:28px}
+.gap{background:var(--surface-2);border-radius:16px;padding:14px 18px;font-size:15px}
+.prof-actions{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:860px){.profile{grid-template-columns:1fr}}
+
+/* Mentor */
+.mentor{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow)}
+.tabs{display:flex;gap:6px;margin-bottom:22px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:transparent;border-radius:999px;padding:9px 18px;font-weight:700;font-size:14px;cursor:pointer;color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.mgrid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:30px}
+.form{display:flex;flex-direction:column;gap:16px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+.field select{width:100%}
+.out{min-height:240px;border-radius:20px;background:var(--bg);border:1px solid var(--line);padding:22px 24px;overflow-wrap:anywhere}
+.out .ph{color:var(--muted);margin:0}
+.thinking{color:var(--muted);display:flex;align-items:center;gap:10px;margin:0}
+.thinking::before{content:"";width:14px;height:14px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--accent);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.md h3,.md h4,.md h5,.md h6{font-family:var(--font-d);font-weight:600;line-height:1.25;margin:22px 0 8px}
+.md h3{font-size:20px}.md h4{font-size:17px}.md h5,.md h6{font-size:15px}
+.md > :first-child{margin-top:0}
+.md p{margin:0 0 12px}
+.md ul,.md ol{margin:0 0 12px;padding-left:22px}
+.md li{margin:4px 0}
+.md code{font-size:.92em;background:var(--surface-2);padding:1px 6px;border-radius:6px}
+.out-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:13px;color:var(--muted)}
+.chat{display:flex;flex-direction:column;gap:14px;max-height:520px;overflow-y:auto;padding:4px}
+.msg{max-width:88%;padding:14px 18px;border-radius:20px;line-height:1.55}
+.msg.user{align-self:flex-end;background:var(--accent);color:var(--on-accent);border-bottom-right-radius:6px;white-space:pre-wrap}
+.msg.assistant{align-self:flex-start;background:var(--surface-2);border-bottom-left-radius:6px}
+.ask{display:flex;gap:10px;margin-top:16px;align-items:flex-end}
+.ask textarea{flex:1;min-height:52px;max-height:160px;resize:vertical;padding:14px 16px;border-radius:18px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit;font-size:15px}
+.off{color:var(--muted);background:var(--surface-2);border-radius:16px;padding:14px 18px;margin:0 0 18px;font-size:15px}
+@media (max-width:860px){.mgrid{grid-template-columns:1fr}.mentor{padding:20px;border-radius:22px}.out{padding:18px}}
+
+/* Drawer */
+.scrim{position:fixed;inset:0;background:rgba(6,10,28,.5);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:80}
+.scrim.on{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(470px,100%);background:var(--surface);z-index:90;transform:translateX(104%);visibility:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1),visibility .4s;overflow-y:auto;overscroll-behavior:contain;padding:calc(env(safe-area-inset-top,0px) + 22px) 28px calc(env(safe-area-inset-bottom,0px) + 28px);border-left:1px solid var(--line);box-shadow:-30px 0 80px -20px rgba(0,0,0,.35)}
+.drawer.on{transform:none;visibility:visible}
+.d-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px}
+.d-pill{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:700;padding:7px 14px;border-radius:999px;background:var(--surface-2)}
+.d-code{font-family:var(--font-d);font-size:15px;font-weight:600;margin:0 0 6px}
+.drawer h3{font-family:var(--font-d);font-weight:600;font-size:26px;line-height:1.15;margin:0 0 14px}
+.drawer .d-sum{color:var(--muted);margin:0 0 22px}
+.d-prog{display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:18px;background:var(--bg);margin-bottom:24px}
+.d-prog svg{width:58px;height:58px;flex:none}
+.d-prog strong{display:block;font-size:17px}
+.d-prog span{color:var(--muted);font-size:14px}
+.drawer h4{font-size:15px;margin:0 0 10px}
+.checks{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:6px}
+.ck{display:flex;gap:14px;align-items:flex-start;padding:12px 14px;border-radius:14px;cursor:pointer;transition:background .2s;border:1px solid transparent}
+.ck:hover{background:var(--bg)}
+.ck input{position:absolute;opacity:0;pointer-events:none}
+.ck .box{flex:none;width:24px;height:24px;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;transition:background .2s,border-color .2s;margin-top:1px}
+.ck .box svg{width:14px;height:14px;stroke:var(--bg);stroke-width:3.2;fill:none;stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .3s .05s}
+.ck input:checked + .box svg{stroke-dashoffset:0}
+.ck input:focus-visible + .box{outline:3px solid var(--accent);outline-offset:2px}
+.ck span.tx{font-size:15px;line-height:1.5}
+.ck input:checked ~ span.tx{color:var(--muted)}
+.d-comm{font-size:14px;color:var(--muted);margin:0 0 20px;display:flex;gap:10px;align-items:center}
+.d-actions{display:flex;flex-direction:column;gap:10px}
+.d-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.linkbtn{border:0;background:none;color:var(--muted);font-weight:700;font-size:14px;cursor:pointer;padding:8px 4px}
+.linkbtn:hover{color:var(--text)}
+@media (max-width:640px){.drawer{top:auto;left:0;width:100%;max-height:90vh;border-radius:26px 26px 0 0;border-left:0;border-top:1px solid var(--line);transform:translateY(104%);padding-top:14px}.drawer::before{content:"";display:block;width:44px;height:5px;border-radius:9px;background:var(--line);margin:0 auto 14px}.drawer h3{font-size:22px}}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);transform:translate(-50%,30px);background:var(--text);color:var(--bg);padding:12px 20px;border-radius:999px;font-weight:700;font-size:14px;opacity:0;transition:opacity .25s,transform .25s;z-index:100;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* Footer */
+footer{margin-top:120px;border-top:1px solid var(--line);background:var(--surface);padding:48px 0 calc(env(safe-area-inset-bottom,0px) + 40px)}
+.foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:40px}
+.foot .copy{font-family:var(--font-d);font-weight:600;font-size:18px;line-height:1.4;margin:0 0 8px}
+.foot .rights{color:var(--muted);margin:0}
+.flinks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px}
+.flinks li{font-size:14px;line-height:1.45}
+.flinks b{display:block;font-weight:700;margin-bottom:2px}
+.flinks a{color:var(--muted);text-decoration:none;overflow-wrap:anywhere;transition:color .2s}
+.flinks a:hover{color:var(--accent);text-decoration:underline}
+@media (max-width:760px){.foot{grid-template-columns:1fr}.flinks{grid-template-columns:1fr}}
+
+/* ---- v2 additions ---- */
+[hidden]{display:none!important}
+@media (max-width:1280px){.hdr{flex-wrap:wrap;height:auto;padding-top:10px;gap:8px 12px}.nav{display:flex;order:3;width:100%;margin:0 -8px;padding-bottom:8px}html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 118px)}}
+.h3sub{font-family:var(--font-d);font-weight:600;font-size:22px;margin:56px 0 8px}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.num{background:var(--surface);padding:22px 22px 18px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--text);transition:background .2s}
+.num:hover{background:var(--surface-2)}
+.num b{font-family:var(--font-d);font-weight:600;font-size:clamp(22px,2.6vw,32px);line-height:1.05;color:var(--accent)}
+.num span{font-size:15px;line-height:1.45;font-weight:600}
+.num small{font-size:12px;color:var(--muted);margin-top:auto;padding-top:6px}
+@media (max-width:860px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.num{padding:16px}}
+.tl{list-style:none;margin:22px 0 0;padding:0 0 0 30px;position:relative;max-width:820px}
+.tl::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tli{position:relative;padding:0 0 24px}
+.tli::before{content:"";position:absolute;left:-28px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--accent)}
+.tli.future::before{border-style:dashed;border-color:var(--p4)}
+.tli time{font-family:var(--font-d);font-size:13px;font-weight:600;color:var(--muted)}
+.tli.future time{color:var(--p4)}
+.tli p{margin:3px 0 2px;font-weight:700;font-size:16px;line-height:1.4}
+.tli a{font-size:13px;color:var(--muted)}
+.cpanel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:36px;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px}
+.cpanel.empty-panel{display:block;color:var(--muted)}
+.cpanel h3{font-family:var(--font-d);font-weight:600;font-size:24px;margin:0 0 8px}
+.cdesc{color:var(--muted);margin:0 0 22px}
+.cready{font-family:var(--font-d);font-weight:700;font-size:56px;line-height:1;color:var(--accent)}
+.cready-cap{color:var(--muted);font-size:14px;margin:8px 0 0}
+@media (max-width:860px){.cpanel{grid-template-columns:1fr;padding:20px;gap:20px}}
+#map[data-role] .m-node:not(.inr){opacity:.13}
+#map[data-role] .m-node.inr .m-core{stroke-width:5}
+.libmeta{color:var(--muted);font-size:14px;margin:18px 0 0}
+.libgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:16px}
+.res{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--rc);border-radius:18px;padding:18px 18px 12px;display:flex;flex-direction:column;gap:12px}
+.res-top{display:flex;gap:12px;align-items:flex-start}
+.badge{flex:none;min-width:44px;height:44px;padding:0 6px;border-radius:12px;display:grid;place-items:center;font-family:var(--font-d);font-weight:600;font-size:12px;background:var(--rc);color:var(--bg)}
+.res h3{font-size:16px;line-height:1.35;margin:0 0 4px;font-weight:800}
+.res h3 a{color:var(--text);text-decoration:none}
+.res h3 a:hover{text-decoration:underline;color:var(--accent)}
+.res .org{font-size:13px;color:var(--muted)}
+.res p{font-size:14px;line-height:1.55;color:var(--muted);margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--muted);border:0;font-family:inherit;line-height:1.3}
+.tag.ty{background:transparent;border:1px solid var(--line);color:var(--text)}
+.tag.sk{cursor:pointer;background:var(--bg)}
+.res-act{display:flex;gap:6px;margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
+.ra{border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;cursor:pointer;color:var(--muted)}
+.ra[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.libmore{display:flex;justify-content:center;margin-top:22px}
+.libmore [hidden]{display:none}
+.gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0 36px;margin:20px 0 0}
+.gli{padding:16px 0;border-top:1px solid var(--line)}
+.gli dt{font-weight:800;font-size:16px}
+.gli dt small{display:block;color:var(--muted);font-weight:600;font-size:13px}
+.gli dd{margin:6px 0 0;color:var(--muted);font-size:15px;line-height:1.5}
+.dtabs{display:flex;gap:6px;margin:0 0 16px;flex-wrap:wrap}
+.dtabs .tab{padding:7px 14px;font-size:13px}
+.concepts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.concept{padding:7px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font-size:14px;font-weight:600}
+.dblock{background:var(--bg);border-radius:16px;padding:16px 18px;margin-bottom:12px}
+.dblock h5{margin:0 0 6px;font-size:13px;color:var(--muted)}
+.dblock p{margin:0;font-size:15px}
+.dblock.warn{border-left:4px solid var(--p4)}
+.dres{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-direction:column;gap:2px}
+.dres li{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
+.dres a{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;line-height:1.35;display:block}
+.dres a:hover{color:var(--accent);text-decoration:underline}
+.dres span{font-size:13px;color:var(--muted)}
+.dres .ra{flex:none}
+.flinks{grid-template-columns:1fr;gap:10px}
+.flinks li{font-size:15px;color:var(--text)}
+.flinks a{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap hdr">
+    <a class="brand" href="#top" aria-label="AI’Han Academy">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="5" fill="var(--accent)"/><circle cx="6" cy="7" r="3" fill="var(--p1)"/><circle cx="26" cy="7" r="3" fill="var(--p2)"/><circle cx="26" cy="25" r="3" fill="var(--p3)"/><circle cx="6" cy="25" r="3" fill="var(--p4)"/><path d="M8.2 9.2 12.5 13M23.8 9.2 19.5 13M23.8 22.8 19.5 19M8.2 22.8 12.5 19" stroke="var(--muted)" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>AI’Han Academy</span>
+    </a>
+    <nav class="nav" aria-label="Bölümler">
+      <a href="#map-sec" data-i18n="nav_map"></a>
+      <a href="#skills" data-i18n="nav_skills"></a>
+      <a href="#roles" data-i18n="nav_roles"></a>
+      <a href="#flow" data-i18n="nav_flow"></a>
+      <a href="#library" data-i18n="nav_lib"></a>
+      <a href="#agenda" data-i18n="nav_agenda"></a>
+      <a href="#profile" data-i18n="nav_profile"></a>
+      <a href="#mentor" data-i18n="nav_mentor"></a>
+      <a href="#glossary" data-i18n="nav_gloss"></a>
+    </nav>
+    <div class="tools">
+      <div class="seg" role="group" aria-label="Dil / Language">
+        <button type="button" data-lang="tr" aria-pressed="true">TR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="icon-btn" id="themeBtn" data-i18n-aria="theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="map-sec">
+    <div class="wrap">
+      <div class="hero-top">
+        <div>
+          <h1 data-i18n="hero_title"></h1>
+          <p class="lede" data-i18n="hero_lede"></p>
+          <div class="ctas">
+            <a class="btn primary" href="#skills" data-i18n="cta_explore"></a>
+            <a class="btn ghost" href="#mentor" data-i18n="cta_plan"></a>
+          </div>
+        </div>
+        <div class="meter-box" aria-live="polite">
+          <p class="meter-num" id="meterNum"></p>
+          <p class="meter-cap" id="meterCap"></p>
+          <div class="segbar" id="segbar"></div>
+          <div class="meta-row">
+            <span><i class="dot" id="syncDot"></i><span id="syncTxt"></span></span>
+            <span id="learnersTxt" hidden></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <svg id="map" viewBox="-60 -90 1520 1190" role="group" aria-label="AI Engineering Skills Map"></svg>
+        <div class="map-ui">
+          <p class="map-hint" id="mapHint" data-i18n="map_hint"></p>
+          <button type="button" class="btn small ghost" id="mapReset" data-i18n="map_reset"></button>
+        </div>
+        <div class="legend" aria-hidden="true">
+          <span><i class="lg"></i><span data-i18n="st_none"></span></span>
+          <span><i class="lg half"></i><span data-i18n="st_learning"></span></span>
+          <span><i class="lg full"></i><span data-i18n="st_done"></span></span>
+        </div>
+      </div>
+      <p class="credit"><span data-i18n="credit"></span> <a href="https://www.deeplearning.ai/resources/ai-engineering-skills" target="_blank" rel="noopener">deeplearning.ai</a></p>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2 data-i18n="skills_title"></h2>
+          <p data-i18n="skills_lede"></p>
+        </div>
+      </div>
+      <div class="toolbar">
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" id="q" data-i18n-ph="search_ph" data-i18n-aria="search_ph">
+        </div>
+        <div class="chips" id="pchips"></div>
+        <select class="sel" id="stFilter" data-i18n-aria="filter_status"></select>
+      </div>
+      <div id="bands"></div>
+    </div>
+  </section>
+
+  <section class="block" id="roles">
+    <div class="wrap">
+      <div class="sec-head"><div><h2 data-i18n="roles_title"></h2><p data-i18n="roles_lede"></p></div></div>
+      <div class="chips" id="careerChips" style="margin-bottom:20px"></div>
+      <div class="cpanel" id="careerPanel" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="block" id="flow">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2 data-i18n="flow_title"></h2>
+          <p data-i18n="flow_lede"></p>
+        </div>
+      </div>
+      <div class="flow" role="tablist" id="flowSteps"></div>
+      <div class="fpanel" role="tabpanel" id="flowPanel"></div>
+    </div>
+  </section>
+
+  <section class="block" id="library">
+    <div class="wrap">
+      <div class="sec-head"><div><h2 data-i18n="lib_title"></h2><p data-i18n="lib_lede"></p></div></div>
+      <div class="toolbar">
+        <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="libQ" data-i18n-ph="lib_search" data-i18n-aria="lib_search"></div>
+        <select class="sel" id="libTy" data-i18n-aria="lib_all_types"></select>
+        <select class="sel" id="libOt" data-i18n-aria="lib_all_orgs"></select>
+        <select class="sel" id="libSk" data-i18n-aria="lib_all_skills"></select>
+        <select class="sel" id="libSort" data-i18n-aria="lib_sort_new"></select>
+        <button type="button" class="chip" id="libMine" aria-pressed="false"></button>
+      </div>
+      <p class="libmeta" id="libMeta" aria-live="polite"></p>
+      <div class="libgrid" id="libGrid"></div>
+      <div class="libmore"><button type="button" class="btn ghost small" id="libMore"></button></div>
+    </div>
+  </section>
+
+  <section class="block" id="agenda">
+    <div class="wrap">
+      <div class="sec-head"><div><h2 data-i18n="agenda_title"></h2><p data-i18n="agenda_lede"></p></div></div>
+      <div class="nums" id="nums"></div>
+      <h3 class="h3sub" data-i18n="tl_title"></h3>
+      <ol class="tl" id="tl"></ol>
+    </div>
+  </section>
+
+  <section class="block" id="profile">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2 data-i18n="profile_title"></h2>
+          <p data-i18n="profile_lede"></p>
+        </div>
+      </div>
+      <div class="profile">
+        <div class="radar-box">
+          <svg id="radar" viewBox="-140 -14 640 382" role="img"></svg>
+          <div class="r-legend">
+            <span><i style="background:var(--accent)"></i><span data-i18n="radar_self"></span></span>
+            <span><i style="background:var(--p2)"></i><span data-i18n="radar_done"></span></span>
+          </div>
+        </div>
+        <div class="sliders">
+          <div id="sliders" class="sliders"></div>
+          <p class="gap" id="gapHint"></p>
+          <div class="prof-actions">
+            <button type="button" class="btn ghost small" id="exportBtn" data-i18n="export"></button>
+            <button type="button" class="btn ghost small" id="resetBtn" data-i18n="reset"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="mentor">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2 data-i18n="mentor_title"></h2>
+          <p data-i18n="mentor_lede"></p>
+        </div>
+      </div>
+      <div class="mentor">
+        <p class="off" id="mentorOff" hidden></p>
+        <div class="tabs" role="tablist">
+          <button type="button" class="tab" role="tab" aria-selected="true" data-tab="plan" data-i18n="tab_plan"></button>
+          <button type="button" class="tab" role="tab" aria-selected="false" data-tab="ask" data-i18n="tab_ask"></button>
+        </div>
+        <div id="panePlan" class="mgrid">
+          <div class="form">
+            <div class="field"><label for="goal" data-i18n="goal_label"></label><select class="sel" id="goal"></select></div>
+            <div class="field"><label for="role" data-i18n="role_label"></label><select class="sel" id="role"></select></div>
+            <div class="field"><label for="hours" id="hoursLbl"></label><input type="range" id="hours" min="2" max="20" step="1" value="6"></div>
+            <div class="field"><label for="focus" data-i18n="focus_label"></label><select class="sel" id="focus"></select></div>
+            <button type="button" class="btn primary" id="planBtn" disabled data-i18n="gen_plan"></button>
+            <button type="button" class="btn ghost" id="planStop" hidden data-i18n="stop"></button>
+          </div>
+          <div>
+            <div class="out md" id="planOut" aria-live="polite"></div>
+            <div class="out-meta"><span id="planMeta"></span></div>
+          </div>
+        </div>
+        <div id="paneAsk" hidden>
+          <div class="out" style="padding:16px">
+            <div class="chat" id="chat" aria-live="polite"></div>
+          </div>
+          <div class="ask">
+            <label for="askIn" class="sr" data-i18n="tab_ask"></label>
+            <textarea id="askIn" rows="2" data-i18n-ph="ask_ph"></textarea>
+            <button type="button" class="btn primary" id="askBtn" disabled data-i18n="ask_send"></button>
+          </div>
+          <div class="out-meta"><button type="button" class="linkbtn" id="askClear" data-i18n="ask_clear"></button><button type="button" class="linkbtn" id="askStop" hidden data-i18n="stop"></button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="block" id="glossary">
+    <div class="wrap">
+      <div class="sec-head"><div><h2 data-i18n="gloss_title"></h2><p data-i18n="gloss_lede"></p></div></div>
+      <div class="toolbar"><div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="glQ" data-i18n-ph="gloss_search" data-i18n-aria="gloss_search"></div></div>
+      <dl class="gl" id="gl"></dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <p class="copy">© 2026 Ayhan Bozkurt — AI’Han Academy</p>
+      <p class="rights">Tüm hakları saklıdır. / All rights reserved.</p>
+    </div>
+    <ul class="flinks">
+      <li>AI’Han Academy: <a href="https://ayhanbzkrt.github.io/benaihan/" target="_blank" rel="noopener">https://ayhanbzkrt.github.io/benaihan/</a></li>
+      <li>İletişim / LinkedIn: <a href="https://www.linkedin.com/in/ayhanbozkurt/" target="_blank" rel="noopener">https://www.linkedin.com/in/ayhanbozkurt/</a></li>
+      <li>GitHub: <a href="https://github.com/ayhanbzkrt" target="_blank" rel="noopener">https://github.com/ayhanbzkrt</a></li>
+      <li>Medium: <a href="https://medium.com/@ayhanbzkrt" target="_blank" rel="noopener">https://medium.com/@ayhanbzkrt</a></li>
+      <li>Kitaplarım / Books: <a href="https://www.kitapyurdu.com/yazar/ayhan-bozkurt/260288.html" target="_blank" rel="noopener">https://www.kitapyurdu.com/yazar/ayhan-bozkurt/260288.html</a></li>
+      <li>YouTube: <a href="https://www.youtube.com/@ayhanbzkrt/videos" target="_blank" rel="noopener">https://www.youtube.com/@ayhanbzkrt/videos</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+  <div class="d-top">
+    <span class="d-pill"><i class="dot" id="dDot"></i><span id="dPillar"></span></span>
+    <button type="button" class="icon-btn" id="dClose" data-i18n-aria="d_close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <p class="d-code" id="dCode"></p>
+  <h3 id="dTitle"></h3>
+  <p class="d-sum" id="dSum"></p>
+  <div class="d-prog">
+    <svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="25" fill="none" stroke="var(--surface-2)" stroke-width="6"/><circle id="dRing" cx="30" cy="30" r="25" fill="none" stroke-width="6" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 30 30)" style="transition:stroke-dasharray .5s"/></svg>
+    <div><strong id="dStatus"></strong><span id="dCount"></span></div>
+  </div>
+  <div class="dtabs" role="tablist">
+    <button type="button" class="tab" role="tab" data-dtab="obj" aria-selected="true" data-i18n="d_objectives"></button>
+    <button type="button" class="tab" role="tab" data-dtab="learn" aria-selected="false" data-i18n="d_learn"></button>
+    <button type="button" class="tab" role="tab" data-dtab="res" aria-selected="false" id="dResTab"></button>
+  </div>
+  <div id="dpObj"><ul class="checks" id="dChecks"></ul></div>
+  <div id="dpLearn" hidden>
+    <h4 data-i18n="d_concepts"></h4>
+    <div class="concepts" id="dConcepts"></div>
+    <div class="dblock"><h5 data-i18n="d_project"></h5><p id="dProject"></p></div>
+    <div class="dblock warn"><h5 data-i18n="d_pitfall"></h5><p id="dPitfall"></p></div>
+  </div>
+  <div id="dpRes" hidden>
+    <ul class="dres" id="dRes"></ul>
+    <button type="button" class="btn ghost small" id="dLibLink" data-i18n="d_lib_all"></button>
+  </div>
+  <p class="d-comm" id="dComm" hidden></p>
+  <div class="d-actions">
+    <button type="button" class="btn primary" id="dAsk" data-i18n="d_ask"></button>
+  </div>
+  <div class="d-nav">
+    <button type="button" class="linkbtn" id="dPrev"></button>
+    <button type="button" class="linkbtn" id="dNext"></button>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- Content ---------- */
+const PILLARS=[
+ {id:"build",code:"1",color:"--p1",angle:-135,
+  t:{tr:"Yapay zekâ uygulamaları geliştirmek ve yayına almak",en:"Building and deploying AI applications"},
+  sh:{tr:"YZ uygulamaları",en:"AI applications"},
+  d:{tr:"Öngörülemeyen modellerden güvenilir sistemler kurmak: inşa et, sonuçları incele, sıradaki adımı seç.",en:"Turning unpredictable models into dependable systems: build, inspect results, choose the next move."}},
+ {id:"swe",code:"2",color:"--p2",angle:-45,
+  t:{tr:"Yazılım mühendisliği temelleri",en:"Software engineering fundamentals"},
+  sh:{tr:"Yazılım temelleri",en:"SWE fundamentals"},
+  d:{tr:"Kodlama ajanını gecikme, güvenilirlik, bakım ve maliyet açısından doğru ödünleşimlere yönlendirmek için sağlam temel.",en:"The grounding you need to steer coding agents toward the right tradeoffs in latency, reliability, maintainability and cost."}},
+ {id:"agents",code:"3",color:"--p3",angle:45,
+  t:{tr:"Kodlama ajanlarını kullanmak",en:"Using coding agents"},
+  sh:{tr:"Kodlama ajanları",en:"Coding agents"},
+  d:{tr:"Ajanları özelleştirip yönlendirerek çok daha fazlasını üretmek; neyin yapıldığı ve kalite çıtası üzerindeki kontrolü elde tutmak.",en:"Customizing and directing agents to get far more done while keeping control of what gets built and the quality bar."}},
+ {id:"shape",code:"4",color:"--p4",angle:135,
+  t:{tr:"Ürünü şekillendirmek",en:"Shaping the build"},
+  sh:{tr:"Ürünü şekillendirmek",en:"Shaping the build"},
+  d:{tr:"Ürün sezgisi, yüksek sahiplik ve ekipler arası liderlikle projeyi uçtan uca sahiplenmek.",en:"Owning projects end to end with product sense, high agency and cross-functional leadership."}}
+];
+const S=(id,p,code,t,sh,s,o)=>({id,p,code,t,sh,s,o});
+const SKILLS=[
+ S("llm","build","1.1",{tr:"LLM temelleri",en:"LLM foundations"},{tr:"LLM temelleri",en:"LLM foundations"},
+  {tr:"Token’lar, bağlam penceresi, örnekleme ve araç çağrısının nasıl çalıştığını bilmek; modele ne zaman güvenip ne zaman güvenmeyeceğini anlamanı sağlar.",en:"Knowing how tokens, context windows, sampling and tool calls work tells you when a model can be trusted and when it will slip."},
+  [["Tokenizasyon ve bağlam penceresi ödünleşimlerini açıklayabilirim","I can explain tokenization and context-window tradeoffs"],["Örnekleme parametrelerini ve akıl yürütme seviyesini bilinçli ayarlarım","I tune sampling parameters and reasoning effort deliberately"],["Görev için doğru modeli ya da model karışımını seçerim","I pick the right model, or mix of models, for a task"],["İnce ayarın ve kendi sunucunda barındırmanın ne zaman değdiğini bilirim","I know when fine-tuning or self-hosting is worth it"]]),
+ S("ground","build","1.2",{tr:"Modeli veriyle temellendirmek",en:"Grounding models with data"},{tr:"Veriyle temellendirme",en:"Grounding with data"},
+  {tr:"Modele doğru, güncel ve ilgili bağlamı vermek; neyin prompt’a gireceğine, neyin araçla anında çekileceğine karar vermek.",en:"Feeding the model accurate, fresh, relevant context, and deciding what lives in the prompt versus what gets fetched on demand."},
+  [["Vektör arama, bilgi grafiği ve semantik katman arasında seçim yaparım","I choose between vector search, knowledge graphs and semantic layers"],["PDF, HTML ve görselleri LLM’e hazır girdiye dönüştürürüm","I turn PDFs, HTML and images into LLM-ready input"],["Veriyi temiz ve taze tutan boru hatları kurarım","I build pipelines that keep data clean and fresh"],["Prompt’a eklemek ile araçla getirmek arasındaki dengeyi kurarım","I balance in-prompt context against tool-based retrieval"]]),
+ S("agentic","build","1.3",{tr:"Ajan sistemler kurmak",en:"Building agentic systems"},{tr:"Ajan sistemler",en:"Agentic systems"},
+  {tr:"Önceden tanımlı iş akışları ile kendi adımını seçen otonom ajanlar arasında mimari seçmek; araç, bellek ve bağlamı yönetip sistemi güvenli hâle getirmek.",en:"Choosing between predefined workflows and autonomous agents, equipping them with tools, memory and context, then making them safe."},
+  [["Zincirleme ve paralel adımlarla iş akışı tasarlarım","I design chained and parallel workflows"],["MCP, CLI ve sandbox araçlarıyla ajan döngüsü kurarım","I build agent loops with MCP, CLI and sandbox tools"],["Uzun oturumlarda bellek ve bağlamı yönetirim","I manage memory and context over long sessions"],["Korkuluklar ve veri sızıntısına karşı önlemler eklerim","I add guardrails and defenses against data exfiltration"]]),
+ S("evals","build","1.4",{tr:"Değerlendirme odaklı geliştirme",en:"Evaluation-driven development"},{tr:"Eval odaklı geliştirme",en:"Eval-driven development"},
+  {tr:"Tahmin yerine sistematik ilerleme: izleri ve çıktıları incele, neyi ölçeceğine karar ver, hata analiziyle sıradaki iyileştirmeyi seç.",en:"Systematic progress instead of guesswork: read traces, decide what to measure, and let error analysis pick the next fix."},
+  [["İzleri (trace) okuyup ölçülecek metrikleri belirlerim","I read traces to decide which metrics matter"],["Kod tabanlı, LLM-hakem ve insan değerlendirmesi arasında seçim yaparım","I choose between code-based, LLM-as-judge and human evals"],["Hata analiziyle bir sonraki iyileştirmeyi önceliklendiririm","I prioritize the next improvement through error analysis"],["Eval’lerimin kendisini de değerlendirip geliştiririm","I evaluate and evolve the evals themselves"]]),
+ S("prodai","build","1.5",{tr:"Üretimde işletim",en:"Operating in production"},{tr:"Üretimde işletim",en:"Production ops"},
+  {tr:"Canlı performansı izlemek, sapmayı ve güvenlik olaylarını yakalamak; maliyet ve gecikmeyi optimize etmek.",en:"Watching live performance, catching drift and security incidents, and trimming cost and latency."},
+  [["Gözlemlenebilirlik ve sapma tespiti kurarım","I set up observability and drift detection"],["İstatistiksel regresyon testleriyle CI/CD işletirim","I run CI/CD with statistical regression tests"],["Prompt injection gibi olaylara hızlı yanıt veririm","I respond quickly to incidents such as prompt injection"],["Model seçimi ve damıtmayla maliyeti ve gecikmeyi düşürürüm","I cut cost and latency through model choice and distillation"]]),
+ S("ml","build","1.6",{tr:"Makine öğrenmesi temelleri",en:"Machine learning foundations"},{tr:"ML temelleri",en:"ML foundations"},
+  {tr:"Denetimli ve pekiştirmeli öğrenmeyi, sapma/varyans düşüncesini bilmek; belirsiz çıktılı sistemlerle akıl yürütmenin temeli.",en:"Supervised and reinforcement learning plus bias/variance thinking: the mental toolkit for systems with uncertain outputs."},
+  [["Denetimli ve pekiştirmeli öğrenmenin farkını açıklarım","I can explain supervised versus reinforcement learning"],["Popüler modellerin doğruluk ve hız ödünleşimlerini bilirim","I know the accuracy and speed tradeoffs of popular models"],["Eğitim ve test verisini bilinçli tasarlarım","I engineer training and evaluation data deliberately"],["Sapma/varyans analiziyle karar veririm","I make decisions with bias/variance analysis"]]),
+ S("fullstack","swe","2.1",{tr:"Full-stack uygulamalar geliştirmek",en:"Building full-stack applications"},{tr:"Full-stack uygulamalar",en:"Full-stack apps"},
+  {tr:"Ön yüzü ve arka ucu birlikte anlamak; ajanlarla uzmanlık alanının ötesinde güvenle çalışmak.",en:"Understanding front end and back end together so you can work confidently beyond your specialty with agents."},
+  [["UI bileşenleri, render ve önbellek mantığını bilirim","I understand UI components, rendering and caching"],["API tasarlar, kimlik doğrulama eklerim","I design APIs and add authentication"],["Durum, oturum ve asenkron işleri yönetirim","I handle state, sessions and async work"],["Erişilebilirliği ve güvenliği baştan düşünürüm","I consider accessibility and security from the start"]]),
+ S("data","swe","2.2",{tr:"Veri yönetimi",en:"Managing data"},{tr:"Veri yönetimi",en:"Managing data"},
+  {tr:"Erişim desenlerine göre veri modeli ve depolama seçmek; veriyi temiz, tutarlı ve mevzuata uyumlu tutmak.",en:"Picking data models and storage from access patterns, and keeping data clean, consistent and compliant."},
+  [["İlişkisel, doküman, anahtar-değer ve graf depolar arasında seçim yaparım","I choose among relational, document, key-value and graph stores"],["İşlem (transaction) ve eşzamanlılığı yönetirim","I handle transactions and concurrency"],["Gizlilik, yönetişim ve veri yaşam döngüsünü planlarım","I plan privacy, governance and the data lifecycle"],["Uygulama büyüdükçe veri mimarisini evriltirim","I evolve the data architecture as the app grows"]]),
+ S("arch","swe","2.3",{tr:"Sistem mimarisi tasarlamak",en:"Designing system architectures"},{tr:"Sistem mimarisi",en:"System architecture"},
+  {tr:"Kullanıcı sayısı, gecikme ve maliyete göre bileşenleri birleştirmek; mimariyi prototipten ölçeğe evriltmek.",en:"Composing components around users, latency and cost, and evolving the architecture from prototype to scale."},
+  [["Sistemi parçalara ayırır, durumun nerede tutulacağına karar veririm","I decompose systems and decide where state lives"],["Monolit ve mikroservis ödünleşimlerini tartarım","I weigh monolith versus microservices"],["Yığın seçeneklerini deneylerle karşılaştırırım","I compare stack options through experiments"],["Mimariyi proje olgunluğuna göre güncellerim","I update the architecture as the project matures"]]),
+ S("secure","swe","2.4",{tr:"Güvenli ve güvenilir sistemler",en:"Making systems secure and reliable"},{tr:"Güvenlik ve güvenilirlik",en:"Secure and reliable"},
+  {tr:"Test stratejisi, hataya göre tasarım ve baştan güvenlik (shift left) ile doğru davranan yazılım.",en:"Software that behaves correctly through test strategy, design for failure and security from day one (shift left)."},
+  [["Birim ve entegrasyon testlerini doğru oranda kurarım","I balance unit and integration tests"],["Zarif bozulma ve sınırlı etki alanı tasarlarım","I design graceful degradation and a small blast radius"],["Kodu ve bağımlılıkları YZ araçlarıyla tararım","I scan code and dependencies with AI tools"],["Bulut yapılandırmasında saldırı yüzeyini kontrol ederim","I check cloud configuration for attack surface"]]),
+ S("scale","swe","2.5",{tr:"Ölçekleme ve üretimde işletim",en:"Scaling and operating in production"},{tr:"Ölçekleme",en:"Scaling"},
+  {tr:"Dağıtım, izleme ve ölçekleme ile gerçek kullanıcıya güvenilir hizmet; teknik borcu yönetilebilir tutmak.",en:"Deploying, monitoring and scaling to serve real users reliably while keeping technical debt in check."},
+  [["CI/CD ve sürüm stratejileri kurarım","I set up CI/CD and release strategies"],["Alarm ve olay yönetimi süreçlerini işletirim","I run alerting and incident response"],["Yük dengeleme, sharding ve replikasyonla ölçeklerim","I scale with load balancing, sharding and replication"],["Kod incelemesi ve bağımlılık bakımıyla teknik borcu yönetirim","I manage technical debt through code review and dependency upkeep"]]),
+ S("direct","agents","3.1",{tr:"İş akışını yönetmek",en:"Directing the workflow"},{tr:"İş akışını yönetmek",en:"Directing the workflow"},
+  {tr:"Planlama, mimari ve delegasyona ne kadar emek harcanacağına karar verip hız ile kaliteyi proje bağlamına göre dengelemek.",en:"Deciding how much effort goes into planning, architecture and delegation, balancing speed and quality for the context."},
+  [["Ölçülebilir hedefler ve bir spesifikasyon yazarım","I write measurable goals and a spec"],["İşi doğrulanabilir parçalara bölerim","I split work into verifiable pieces"],["Hız, maliyet ve teknik risk arasında denge kurarım","I balance speed, cost and technical risk"],["Kritik işlerde insan sahipliğini korurum","I keep human ownership of critical work"]]),
+ S("autonomy","agents","3.2",{tr:"Ajan otonomisini mümkün kılmak",en:"Enabling agent autonomy"},{tr:"Ajan otonomisi",en:"Agent autonomy"},
+  {tr:"Doğru otonomi seviyesini seçmek, paralel ajanları orkestre etmek ve izinlerle riski sınırlamak.",en:"Choosing the right autonomy level, orchestrating parallel agents, and limiting risk with permissions."},
+  [["Etkileşimli yönlendirme ile tam otonomi arasında seviye seçerim","I choose between interactive steering and full autonomy"],["Öğrenimleri kaydedip bağlamı aşamalar arasında taşırım","I record learnings and carry context between phases"],["Paralel ajan oturumlarını orkestre ederim","I orchestrate parallel agent sessions"],["İzin ve onay kapılarıyla veri kaybını önlerim","I prevent data loss with permissions and approval gates"]]),
+ S("review","agents","3.3",{tr:"İşi gözden geçirmek",en:"Reviewing the work"},{tr:"İşi gözden geçirmek",en:"Reviewing the work"},
+  {tr:"Ajan çıktısını işlev, davranış ve güvenlik açısından doğrulamak; testi ve izlemeyi otomatikleştirmek.",en:"Verifying agent output for function, behavior and security, and automating testing and monitoring."},
+  [["Göreve uygun test ve eval setleri tasarlarım","I design task-appropriate tests and eval sets"],["Ajanlı kod incelemesi ve güvenlik denetimi çalıştırırım","I run agentic code review and security audits"],["İnsan incelemesini gerçekten gereken noktaya koyarım","I insert human review where it truly matters"],["Dağıtımı doğrular, izlemeyi ajanlarla işletirim","I verify deploys and run monitoring with agents"]]),
+ S("custom","agents","3.4",{tr:"Ajanı ve ortamını özelleştirmek",en:"Customizing the agent and its environment"},{tr:"Ajan ortamı",en:"Agent environment"},
+  {tr:"Skill, hook, MCP ve kalıcı bağlam dosyalarıyla ajana ihtiyaç duyduğu araçları ve bilgiyi vermek.",en:"Giving the agent the tools and knowledge it needs through skills, hooks, MCP and standing context files."},
+  [["Skill, eklenti ve MCP sunucularını yapılandırırım","I configure skills, plugins and MCP servers"],["Hook’larla tekrar eden adımları otomatikleştiririm","I automate repeatable steps with hooks"],["AGENTS.md / CLAUDE.md gibi bağlam dosyalarını güncel tutarım","I keep AGENTS.md / CLAUDE.md context current"],["Ajanın ürettiği teknik borcu temizlerim","I clean up agent-generated technical debt"]]),
+ S("agentfound","agents","3.5",{tr:"Kodlama ajanı temelleri",en:"Coding agent foundations"},{tr:"Ajan temelleri",en:"Agent foundations"},
+  {tr:"Ajanların kod tabanında nasıl arama yaptığını, bağlamı nasıl yönettiğini ve nerede tökezlediğini bilmek.",en:"Knowing how agents search codebases, manage context, and where they tend to stumble."},
+  [["Ajan döngüsünü (harness) ve alt ajanları açıklayabilirim","I can explain the agent harness and subagents"],["Araçların ve MCP’lerin bağlamı nasıl etkilediğini bilirim","I know how tools and MCPs affect context"],["Aşırı mühendislik ve yarıda bırakma gibi hata modlarını tanırım","I spot failure modes like overengineering or stopping short"],["Ajan raydan çıktığında zamanında müdahale ederim","I intervene in time when an agent goes off track"]]),
+ S("loop","shape","4.1",{tr:"Geliştirme döngüsünü sürmek",en:"Driving the build loop"},{tr:"Geliştirme döngüsü",en:"Build loop"},
+  {tr:"Fikirden prototipe, MVP’den üretime hızla ilerlemek; her iterasyonu belirsizliği azaltmak için kullanmak.",en:"Moving quickly from idea to prototype to MVP to production, using each iteration to reduce uncertainty."},
+  [["Hızla prototip ve MVP çıkarırım","I ship prototypes and MVPs quickly"],["Küçük partiler hâlinde yayınlarım","I ship in small batches"],["Kullanıcı geri bildirimi veya deneyle sonraki adımı seçerim","I pick next steps from user feedback or experiments"],["İyileştirmeyi yönlendiren metrikler tanımlarım","I define metrics that drive improvement"]]),
+ S("product","shape","4.2",{tr:"Ürün kararları vermek",en:"Making product decisions"},{tr:"Ürün kararları",en:"Product decisions"},
+  {tr:"Ürün, tasarım ve iş sezgisini kullanıcı empatisiyle birleştirip gerçek ihtiyaçları karşılayan çözümler kurmak.",en:"Combining product, design and business sense with user empathy to build what people actually need."},
+  [["Spesifikasyon yoksa kendim yazarım","I write the spec when there isn’t one"],["Kullanıcı görüşmesi, anket ve A/B testi yaparım","I run user interviews, surveys and A/B tests"],["Birim ekonomisini ve pazar büyüklüğünü hesaba katarım","I factor in unit economics and market size"],["İşlevselin ötesinde keyifli deneyimler tasarlarım","I design experiences that feel good, not just function"]]),
+ S("comm","shape","4.3",{tr:"İletişim ve liderlik",en:"Communicating and leading"},{tr:"İletişim ve liderlik",en:"Communicating and leading"},
+  {tr:"Paydaşları hizalamak, teknik fizibiliteyi teknik olmayan ekiplere anlatmak ve organizasyonu ileri taşımak.",en:"Aligning stakeholders, explaining feasibility to non-technical teams, and moving the organization forward."},
+  [["Paydaşları ortak bir hedefte hizalarım","I align stakeholders on a shared goal"],["Pazarlama, finans ve hukukla birlikte çalışırım","I collaborate with marketing, finance and legal"],["Teknik kısıtları sade bir dille anlatırım","I explain technical constraints in plain language"],["YZ’nin neyi mümkün kıldığını organizasyona gösteririm","I show the organization what AI makes possible"]]),
+ S("agency","shape","4.4",{tr:"Yüksek sahiplik",en:"High agency ownership"},{tr:"Yüksek sahiplik",en:"High agency"},
+  {tr:"Belirsizlikte karar verip engellere rağmen ilerlemek; işi kapatılan görevle değil yaratılan değerle ölçmek.",en:"Acting decisively in ambiguity, persisting through setbacks, and measuring work by value created rather than tasks closed."},
+  [["Fırsatı görüp talimat beklemeden çözüm öneririm","I spot opportunities and propose solutions unprompted"],["Girişimleri uçtan uca sahiplenirim","I own initiatives end to end"],["Etkiye ve kısıtlara göre önceliklendiririm","I prioritize by impact and constraints"],["Teknoloji sınırını takip edip sürekli öğrenirim","I track the frontier and keep learning"]])
+];
+const FLOW=[
+ {t:{tr:"Planlama",en:"Planning"},s:{tr:"Ne inşa edeceğine karar verdiğin yer. Kod yazılmadan önce düşünce netleşir.",en:"Where you decide what to build. Thinking gets sharp before any code is written."},
+  items:[["Beyin fırtınası, araştırma ve küçük deneyler","Brainstorming, research and quick experiments"],["Mevcut kod tabanını anlamak","Understanding the existing codebase"],["Gereksinimleri, teknik tasarımı ve mimariyi içeren bir spesifikasyon","A spec covering requirements, technical design and architecture"],["Uygulama planı; varsayımların güvenlik ve aşırı mühendislik açısından sorgulanması","An execution plan, with assumptions challenged for security and overengineering"]],rel:["direct","arch","product"]},
+ {t:{tr:"Uygulama",en:"Execution"},s:{tr:"Ajan inşa eder; sen otonomi seviyesini ayarlar ve sonucu doğrularsın.",en:"The agent builds; you calibrate its autonomy and verify the result."},
+  items:[["Ajanın kodu ölçülü bir otonomiyle yazması","The agent writes the code with calibrated autonomy"],["Otomatik testler ve ajanlı kod incelemesi","Automated tests and agentic code review"],["Gerektiği yerde insan kontrolü","Human checks where they matter"],["Bulgular gerektirdiğinde plana geri dönmek","Looping back to the plan when findings demand it"]],rel:["autonomy","review","agentfound"]},
+ {t:{tr:"Dağıtım ve izleme",en:"Deploy and monitor"},s:{tr:"Yayına al, ardından ajanların sistemi izleyip iyileştirme önermesine izin ver.",en:"Ship it, then let agents watch the system and propose improvements."},
+  items:[["CI/CD hattı veya insan onay kapısıyla yayın","Release through a CI/CD pipeline or a human approval gate"],["Ajanların logları izlemesi","Agents watching the logs"],["Sorunların erken yüzeye çıkarılması","Surfacing issues early"],["İyileştirmelerin önerilip uygulanması","Proposing and applying improvements"]],rel:["scale","prodai","custom"]}
+];
+const GOALS=[["AI Engineer rolüne geçmek","Move into an AI engineer role"],["Mevcut rolümde YZ becerisi kazanmak","Add AI skills to my current role"],["Kendi YZ ürünümü geliştirmek","Build my own AI product"]];
+const ROLES=[["Öğrenci","Student"],["Frontend geliştirici","Frontend developer"],["Backend geliştirici","Backend developer"],["Full-stack geliştirici","Full-stack developer"],["Veri / ML mühendisi","Data / ML engineer"],["DevOps / Platform","DevOps / Platform"],["Ürün yöneticisi / Tasarımcı","Product manager / Designer"],["Diğer","Other"]];
+const LEVELS=[["Yeni başlıyorum","Just starting"],["Temel","Basic"],["Rahat","Comfortable"],["İleri","Advanced"],["Uzman","Expert"]];
+
+const I18N={
+ tr:{nav_map:"Harita",nav_skills:"Beceriler",nav_flow:"Ajan iş akışı",nav_profile:"Profilim",nav_mentor:"YZ mentör",theme:"Temayı değiştir",
+  hero_title:"AI Engineering Beceri Haritası",
+  hero_lede:"Modern geliştiricinin araç kutusu: 4 sütun, 20 beceri, 80 kazanım. Haritayı keşfet, ilerlemeni işaretle, YZ mentörden sana özel bir öğrenme planı al.",
+  cta_explore:"Becerileri keşfet",cta_plan:"Planımı oluştur",
+  meter_num:"%{p} tamamlandı",meter_cap:"{d} / 80 kazanım işaretlendi",
+  sync_cloud:"Hesabına kaydediliyor",sync_local:"Bu tarayıcıda kaydediliyor",sync_wait:"Bağlanıyor…",
+  learners:"{n} öğrenen haritada",
+  map_hint:"Bir sütuna dokunup yakınlaş; bir beceriye dokunup ayrıntılarını aç.",map_reset:"Tüm harita",
+  st_none:"Başlanmadı",st_learning:"Öğreniliyor",st_done:"Tamamlandı",
+  credit:"Yapı, DeepLearning.AI’ın AI Engineering Skills Map çalışmasından ilham alır; metinler AI’Han Academy için yeniden yazılmıştır.",
+  skills_title:"Beceriler",skills_lede:"Her becerinin dört kazanımı var. İşaretledikçe harita, profilin ve mentör planın güncellenir.",
+  search_ph:"Beceri ara…",filter_all:"Tümü",filter_status:"Duruma göre filtrele",all_status:"Tüm durumlar",
+  no_results:"Bu filtreyle eşleşen beceri yok. Aramayı temizleyip tekrar dene.",
+  skill_count:"{n} beceri",band_prog:"{d} / {t} kazanım",
+  flow_title:"Kodlama ajanlarıyla iş akışı",flow_lede:"Deneyimli mühendislerin ajanlarla yazılım geliştirirken izlediği üç adım. Geri bildirim geldikçe önceki adıma dönmek işin doğal parçası.",
+  flow_rel:"Bu adımı güçlendiren beceriler",flow_note:"Odak artık koddan çok neyin inşa edileceğine, mimariye, spesifikasyona ve doğrulamaya kayıyor.",
+  profile_title:"Profilim",profile_lede:"Kendini her sütunda 1–5 arası puanla. Radar, öz değerlendirmeni işaretlediğin kazanımlarla karşılaştırır.",
+  radar_self:"Öz değerlendirme",radar_done:"Tamamlanan kazanımlar",
+  gap_hint:"Sıradaki odak önerisi: {p}. Bu sütunda kazanımların %{c}’i tamamlandı.",gap_all:"Tüm sütunlar tamamlandı. Şimdi bildiklerini bir projeyle göstermenin zamanı.",
+  export:"Raporu indir",reset:"İlerlemeyi sıfırla",reset_confirm:"Emin misin? Tekrar bas",reset_done:"İlerleme sıfırlandı",
+  copied:"Rapor panoya kopyalandı",downloaded:"Rapor indirildi",export_fail:"Rapor indirilemedi",
+  mentor_title:"YZ mentör",mentor_lede:"İlerlemene ve hedefine bakarak 4 haftalık bir plan hazırlar ya da sorularını yanıtlar. Yanıtları Claude, senin Claude hesabın üzerinden üretir.",
+  tab_plan:"Kişisel plan",tab_ask:"Soru sor",
+  goal_label:"Hedefin",role_label:"Şu anki rolün",hours:"Haftalık süre: {h} saat",focus_label:"Odak beceri",focus_auto:"Otomatik: en az ilerlediğim beceriler",
+  gen_plan:"Planı oluştur",regen_plan:"Planı yenile",stop:"Durdur",thinking:"Mentör düşünüyor…",
+  plan_empty:"Henüz plan yok. Hedefini seç ve “Planı oluştur”a bas.",plan_meta:"Son plan: {d}",
+  ask_ph:"Örn: RAG ile bilgi grafiği arasında nasıl seçim yaparım?",ask_send:"Gönder",ask_clear:"Sohbeti temizle",
+  chat_empty:"Yapay zekâ mühendisliğiyle ilgili istediğini sor. Mentör ilerleme durumunu da hesaba katar.",
+  mentor_off:"YZ mentör bu görünümde kullanılamıyor. Sayfa Claude içinde açıldığında etkinleşir; harita ve ilerleme takibi her yerde çalışır.",
+  err_not_granted:"Mentör izni verilmedi. İzin vermek için sayfanın İzinler menüsünü kullan.",
+  err_rate:"Kısa sürede çok fazla istek gönderildi. Bir dakika bekleyip tekrar dene.",
+  err_generic:"Mentör yanıt veremedi. Biraz sonra tekrar dene.",stopped:"Durduruldu.",
+  d_objectives:"Kazanımlar",d_ask:"Bu beceriyi mentöre sor",d_prev:"‹ Önceki",d_next:"Sonraki ›",d_close:"Kapat",d_count:"{d} / 4 kazanım",
+  d_comm:"{n} öğrenen bu beceriyi tamamladı",d_comm0:"Bu beceriyi henüz kimse tamamlamadı. İlk sen ol.",
+  ask_skill_q:"“{s}” becerisini geliştirmek istiyorum. Pratik bir başlangıç noktası ve bir hafta sonunda bitirebileceğim küçük bir proje fikri verir misin?",
+  pillar:"Sütun",report_title:"AI Engineering Beceri Haritası: İlerleme Raporu"},
+ en:{nav_map:"Map",nav_skills:"Skills",nav_flow:"Agent workflow",nav_profile:"My profile",nav_mentor:"AI mentor",theme:"Toggle theme",
+  hero_title:"AI Engineering Skills Map",
+  hero_lede:"The modern developer’s toolkit: 4 pillars, 20 skills, 80 outcomes. Explore the map, track your progress, and get a learning plan tailored to you from the AI mentor.",
+  cta_explore:"Explore the skills",cta_plan:"Build my plan",
+  meter_num:"{p}% complete",meter_cap:"{d} of 80 outcomes ticked",
+  sync_cloud:"Saved to your account",sync_local:"Saved in this browser",sync_wait:"Connecting…",
+  learners:"{n} learners on the map",
+  map_hint:"Tap a pillar to zoom in; tap a skill to open its details.",map_reset:"Full map",
+  st_none:"Not started",st_learning:"Learning",st_done:"Done",
+  credit:"Structure inspired by DeepLearning.AI’s AI Engineering Skills Map; text rewritten for AI’Han Academy.",
+  skills_title:"Skills",skills_lede:"Each skill has four outcomes. As you tick them, the map, your profile and your mentor plan update.",
+  search_ph:"Search skills…",filter_all:"All",filter_status:"Filter by status",all_status:"All statuses",
+  no_results:"No skills match this filter. Clear the search and try again.",
+  skill_count:"{n} skills",band_prog:"{d} of {t} outcomes",
+  flow_title:"The coding-agent workflow",flow_lede:"Three steps experienced engineers follow when building with agents. Looping back when feedback arrives is a natural part of the job.",
+  flow_rel:"Skills that strengthen this step",flow_note:"The focus shifts away from code toward deciding what to build, architecture, specs and verification.",
+  profile_title:"My profile",profile_lede:"Rate yourself 1–5 in each pillar. The radar compares your self-assessment with the outcomes you’ve ticked.",
+  radar_self:"Self-assessment",radar_done:"Completed outcomes",
+  gap_hint:"Suggested next focus: {p}. You’ve completed {c}% of its outcomes.",gap_all:"Every pillar is complete. Time to prove it with a project.",
+  export:"Download report",reset:"Reset progress",reset_confirm:"Are you sure? Press again",reset_done:"Progress reset",
+  copied:"Report copied to clipboard",downloaded:"Report downloaded",export_fail:"Couldn’t download the report",
+  mentor_title:"AI mentor",mentor_lede:"Builds a 4-week plan from your progress and goal, or answers your questions. Answers are generated by Claude using your own Claude account.",
+  tab_plan:"Personal plan",tab_ask:"Ask a question",
+  goal_label:"Your goal",role_label:"Current role",hours:"Weekly time: {h} hours",focus_label:"Focus skill",focus_auto:"Automatic: my least-progressed skills",
+  gen_plan:"Generate plan",regen_plan:"Regenerate plan",stop:"Stop",thinking:"The mentor is thinking…",
+  plan_empty:"No plan yet. Pick your goal and press “Generate plan”.",plan_meta:"Last plan: {d}",
+  ask_ph:"e.g. How do I choose between RAG and a knowledge graph?",ask_send:"Send",ask_clear:"Clear chat",
+  chat_empty:"Ask anything about AI engineering. The mentor takes your progress into account.",
+  mentor_off:"The AI mentor isn’t available in this view. It turns on when the page is opened inside Claude; the map and progress tracking work everywhere.",
+  err_not_granted:"Mentor access wasn’t allowed. Use the page’s Permissions menu to allow it.",
+  err_rate:"Too many requests in a short time. Wait a minute and try again.",
+  err_generic:"The mentor couldn’t answer. Try again shortly.",stopped:"Stopped.",
+  d_objectives:"Outcomes",d_ask:"Ask the mentor about this skill",d_prev:"‹ Previous",d_next:"Next ›",d_close:"Close",d_count:"{d} of 4 outcomes",
+  d_comm:"{n} learners completed this skill",d_comm0:"Nobody has completed this skill yet. Be the first.",
+  ask_skill_q:"I want to build my “{s}” skill. Can you give me a practical starting point and a small project I could finish in a week?",
+  pillar:"Pillar",report_title:"AI Engineering Skills Map: Progress Report"}
+};
+
+/* ---------- Extended content ---------- */
+const R=(id,ab,t,o,ot,ty,y,u,s,dtr,den,lang)=>({id,ab,t,o,ot,ty,y,u,s,d:{tr:dtr,en:den},lang:lang||"EN"});
+const RES=[
+ // International organizations
+ R("aisr26","IASR","International AI Safety Report 2026","International AI Safety Report (Chair: Yoshua Bengio)","intl","report",2026,"https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026",["agentic","prodai","secure","comm"],"100’den fazla uzmanın yazdığı, 30’u aşkın ülke ve uluslararası kuruluşun desteklediği; genel amaçlı YZ’nin yeteneklerini, risklerini ve önlemlerini sentezleyen bilimsel değerlendirme.","A scientific synthesis of general-purpose AI capabilities, risks and safeguards, written by 100+ experts and backed by 30+ countries and international organizations."),
+ R("oecdp","OECD","OECD AI Principles","OECD","intl","framework",2024,"https://oecd.ai/en/ai-principles",["agency","comm","secure"],"Güvenilir YZ için ilk hükümetlerarası standart; 2024’te üretken YZ gelişmelerine göre güncellendi.","The first intergovernmental standard for trustworthy AI, updated in 2024 to reflect generative AI."),
+ R("oecdai","OECD","OECD.AI Policy Observatory","OECD","intl","benchmark",0,"https://oecd.ai",["comm","product"],"Ülke politikaları, yatırım, yetenek ve olay verileri için canlı gözlemevi.","A live observatory of national policies, investment, talent and incident data."),
+ R("unesco","UNESCO","Recommendation on the Ethics of Artificial Intelligence","UNESCO","intl","framework",2021,"https://www.unesco.org/en/artificial-intelligence/recommendation-ethics",["comm","agency","product"],"193 üye devletin kabul ettiği ilk küresel YZ etiği standardı.","The first global standard on AI ethics, adopted by 193 member states."),
+ R("ilo25","ILO","Generative AI and Jobs: A Refined Global Index of Occupational Exposure","ILO & NASK","intl","report",2025,"https://www.ilo.org/node/706766",["comm","product","agency"],"Küresel istihdamın yaklaşık dörtte birinin üretken YZ’ye potansiyel olarak maruz kaldığını; en olası sonucun yer değiştirme değil dönüşüm olduğunu gösterir.","Finds about one in four jobs worldwide potentially exposed to generative AI, with transformation more likely than replacement."),
+ R("imf24","IMF","Gen-AI: Artificial Intelligence and the Future of Work","International Monetary Fund","intl","report",2024,"https://www.imf.org/en/Publications/Staff-Discussion-Notes/Issues/2024/01/14/Gen-AI-Artificial-Intelligence-and-the-Future-of-Work-542379",["comm","agency"],"Küresel istihdamın yaklaşık %40’ının YZ’den etkileneceğini öngören IMF tartışma notu.","IMF staff discussion note estimating that almost 40% of global employment is exposed to AI."),
+ R("wef25","WEF","The Future of Jobs Report 2025","World Economic Forum","intl","report",2025,"https://www.weforum.org/publications/the-future-of-jobs-report-2025/",["agency","comm","product"],"İşverenlerin 2025–2030 dönemi için beceri, rol ve iş gücü dönüşümü beklentileri.","Employer expectations for skills, roles and workforce transformation from 2025 to 2030."),
+ R("unaab","UN","Governing AI for Humanity","UN High-level Advisory Body on AI","intl","report",2024,"https://www.un.org/en/ai-advisory-body",["comm"],"Küresel YZ yönetişimi için Birleşmiş Milletler danışma kurulunun nihai önerileri.","Final recommendations of the UN advisory body on global AI governance."),
+ R("coe","CoE","Framework Convention on Artificial Intelligence","Council of Europe","intl","regulation",2024,"https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence",["comm","secure"],"İnsan hakları, demokrasi ve hukukun üstünlüğü odaklı ilk bağlayıcı uluslararası YZ antlaşması.","The first binding international AI treaty, focused on human rights, democracy and the rule of law."),
+ R("iso42001","ISO","ISO/IEC 42001: AI management systems","ISO / IEC","intl","framework",2023,"https://www.iso.org/standard/42001",["secure","agency","comm","prodai"],"Kurumlar için denetlenebilir YZ yönetim sistemi standardı; NIST AI RMF ile sık eşleştirilir.","An auditable AI management-system standard for organizations, often paired with the NIST AI RMF."),
+ // Governments & regulators
+ R("nistrmf","NIST","AI Risk Management Framework (AI RMF 1.0)","NIST (U.S.)","gov","framework",2023,"https://www.nist.gov/itl/ai-risk-management-framework",["secure","prodai","evals","agency"],"Govern, Map, Measure ve Manage işlevleriyle gönüllü risk çerçevesi. Nisan 2026’da kritik altyapı profili için kavram notu yayımlandı.","A voluntary risk framework built on Govern, Map, Measure and Manage. A concept note for a critical-infrastructure profile followed in April 2026."),
+ R("nist600","NIST","AI 600-1: Generative AI Profile","NIST (U.S.)","gov","framework",2024,"https://doi.org/10.6028/NIST.AI.600-1",["secure","agentic","prodai","data"],"Üretken YZ’ye özgü ya da onunla büyüyen riskleri ve önerilen eylemleri listeleyen AI RMF profili.","The AI RMF profile listing risks unique to or amplified by generative AI, with suggested actions."),
+ R("euact","EU","EU AI Act: Regulation (EU) 2024/1689","European Union","gov","regulation",2024,"https://eur-lex.europa.eu/eli/reg/2024/1689/oj",["secure","data","comm","product"],"Risk temelli AB düzenlemesi. Digital Omnibus anlaşmasıyla Annex III yüksek risk yükümlülükleri 2 Aralık 2027’ye, Annex I ürünleri 2 Ağustos 2028’e kaydırıldı.","The EU’s risk-based regulation. Under the Digital Omnibus deal, Annex III high-risk obligations move to 2 December 2027 and Annex I products to 2 August 2028."),
+ R("euexp","AIA","AI Act Explorer","Future of Life Institute","community","docs",0,"https://artificialintelligenceact.eu",["comm","secure"],"AI Act metnini madde madde gezmek ve uygulama takvimini izlemek için.","Browse the AI Act article by article and follow its implementation timeline."),
+ R("inspect","AISI","Inspect: open-source framework for LLM evaluations","UK AI Security Institute","gov","docs",0,"https://inspect.aisi.org.uk",["evals","review","agentic"],"Bir hükümet güvenlik enstitüsünün geliştirdiği açık kaynak değerlendirme çerçevesi; ajan ve araç kullanımı testlerini destekler.","An open-source evaluation framework built by a government safety institute, with support for agent and tool-use tests."),
+ R("cbddo","CBDDO","Ulusal Yapay Zekâ Stratejisi 2021–2025 ve 2024–2025 Eylem Planı","Cumhurbaşkanlığı Dijital Dönüşüm Ofisi","gov","regulation",2024,"https://cbddo.gov.tr/uyzs",["comm","agency","product"],"Türkiye’nin YZ yol haritası. Güncellenen eylem planı üretken YZ, Türkçe büyük dil modelleri ve girişim ekosistemine odaklanır.","Türkiye’s national AI roadmap. The updated action plan focuses on generative AI, Turkish large language models and the startup ecosystem.","TR"),
+ R("kvkk","KVKK","Üretken Yapay Zekâ ve Kişisel Verilerin Korunması Rehberi (15 Soruda)","Kişisel Verileri Koruma Kurumu","gov","guide",2025,"https://www.kvkk.gov.tr",["data","secure","ground"],"Üretken YZ’nin yaşam döngüsü boyunca kişisel veri işlemeyi 6698 sayılı Kanun çerçevesinde ele alır. Kurum sitesinin yayınlar bölümünde.","Covers personal-data processing across the generative AI life cycle under Türkiye’s Law No. 6698. Available in the authority’s publications section.","TR"),
+ R("kvkkag","KVKK","Etken Yapay Zekâ (Agentic AI) dokümanı","Kişisel Verileri Koruma Kurumu","gov","guide",2026,"https://www.kvkk.gov.tr",["autonomy","agentic","data"],"Otonom ajan sistemlerini kişisel verilerin korunması açısından değerlendiren kurum dokümanı.","The authority’s document assessing autonomous agent systems from a data-protection perspective.","TR"),
+ // Research institutes
+ R("aiidx","HAI","AI Index Report 2026","Stanford HAI","research","report",2026,"https://hai.stanford.edu/ai-index/2026-ai-index-report",["llm","ml","evals","comm"],"Teknik performans, sorumlu YZ, ekonomi, bilim, tıp, eğitim ve politika verilerini derleyen 9. yıllık rapor.","The ninth annual report compiling data on technical performance, responsible AI, economy, science, medicine, education and policy."),
+ R("soai","SoAI","State of AI Report 2026","Air Street Capital (Nathan Benaich)","research","report",2026,"https://www.stateof.ai",["llm","agentic","comm"],"Araştırma, endüstri, politika ve güvenliği kapsayan, hakem görüşü alınmış yıllık bağımsız analiz (8 Ekim 2026).","An independent, peer-reviewed annual analysis of research, industry, politics and safety (8 October 2026)."),
+ R("epoch","EAI","Epoch AI: data on AI","Epoch AI","research","benchmark",0,"https://epoch.ai",["llm","ml","prodai"],"Hesaplama, eğitim maliyeti, model ve benchmark eğilimleri için açık veri ve analizler.","Open data and analysis on compute, training cost, models and benchmark trends."),
+ R("metr","METR","Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity","METR","research","paper",2025,"https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",["direct","review","agentfound"],"Deneyimli geliştiricilerle yapılan randomize kontrollü çalışma; algılanan hız ile ölçülen hız arasındaki farkı tartışır.","A randomized controlled trial with experienced developers, contrasting perceived and measured speed-ups."),
+ R("helm","CRFM","HELM: Holistic Evaluation of Language Models","Stanford CRFM","research","benchmark",2022,"https://crfm.stanford.edu/helm/",["evals","llm"],"Dil modellerini çok boyutlu senaryolarla şeffaf biçimde değerlendiren çerçeve.","A framework for transparent, multi-dimensional evaluation of language models."),
+ R("ailum","MLC","AILuminate","MLCommons","research","benchmark",2025,"https://mlcommons.org/ailuminate/",["evals","secure"],"Üretken YZ sistemleri için standartlaştırılmış güvenlik benchmark’ı.","A standardized safety benchmark for generative AI systems."),
+ R("atlas","MITRE","MITRE ATLAS","MITRE","research","framework",0,"https://atlas.mitre.org",["secure","agentic","prodai"],"YZ sistemlerine yönelik gerçek saldırı taktik ve tekniklerinin bilgi tabanı.","A knowledge base of real-world adversary tactics and techniques against AI systems."),
+ R("aiid","AIID","AI Incident Database","Responsible AI Collaborative","community","benchmark",0,"https://incidentdatabase.ai",["prodai","secure","product"],"Gerçek dünyada yaşanmış YZ olaylarının arşivi; hata modlarından öğrenmek için.","An archive of real-world AI incidents for learning from failure modes."),
+ R("arena","LMA","LMArena","LMArena","research","benchmark",0,"https://lmarena.ai",["llm","evals"],"Kullanıcı tercihlerine dayalı, kör karşılaştırmalı model sıralaması.","Blind, preference-based model rankings from real users."),
+ R("aa","AA","Artificial Analysis","Artificial Analysis","company","benchmark",0,"https://artificialanalysis.ai",["llm","prodai"],"Model zekâsı, hız ve fiyatını yan yana karşılaştırır; model seçimi ve maliyet planlaması için.","Side-by-side comparisons of model intelligence, speed and price for model selection and cost planning."),
+ // Company research & surveys
+ R("econidx","ANT","Anthropic Economic Index","Anthropic","company","report",0,"https://www.anthropic.com/economic-index",["product","comm","agency"],"YZ’nin gerçek işlerde ve mesleklerde nasıl kullanıldığına dair veri temelli rapor serisi.","A data-driven report series on how AI is used across real tasks and occupations."),
+ R("mck","McK","The State of AI (Global Survey)","McKinsey & Company / QuantumBlack","company","report",2026,"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",["product","loop","agency"],"Kurumların YZ ve ajan benimsemesi ile değer yaratımı üzerine yıllık küresel anket.","Annual global survey on enterprise adoption of AI and agents and the value it creates."),
+ R("dora","DORA","State of AI-assisted Software Development (2025)","Google Cloud DORA","company","report",2025,"https://cloud.google.com/resources/content/2025-dora-ai-assisted-software-development-report",["direct","scale","review"],"YZ benimsemesini araç değil sistem sorunu olarak ele alır; yedi temel uygulamadan oluşan DORA YZ Yetkinlik Modeli’ni tanıtır.","Treats AI adoption as a systems problem and introduces the seven-practice DORA AI Capabilities Model."),
+ R("so26","SO","Stack Overflow Developer Survey 2026","Stack Overflow","company","report",2026,"https://survey.stackoverflow.co",["agentfound","direct","review"],"Geliştiricilerin YZ asistanı ve ajan kullanımı, güven ve doğrulama alışkanlıkları.","How developers use AI assistants and agents, and how they trust and verify output."),
+ R("octo","GH","Octoverse","GitHub","company","report",0,"https://octoverse.github.com",["fullstack","agentfound"],"Açık kaynak ve YZ projelerinde dil, araç ve katkı eğilimleri.","Language, tooling and contribution trends across open-source and AI projects."),
+ R("wti","MS","Work Trend Index","Microsoft","company","report",0,"https://www.microsoft.com/en-us/worklab/work-trend-index",["comm","agency"],"YZ’nin bilgi işçilerinin çalışma biçimini nasıl değiştirdiğine dair yıllık araştırma.","Annual research on how AI is changing the way knowledge workers work."),
+ R("pwc","PwC","Global AI Jobs Barometer","PwC","company","report",0,"https://www.pwc.com/gx/en/issues/artificial-intelligence/ai-jobs-barometer.html",["agency","comm"],"İş ilanı verilerinden YZ’nin ücret, verimlilik ve beceri talebine etkisini inceler.","Uses job-posting data to study AI’s effect on wages, productivity and skill demand."),
+ // Company guides & docs
+ R("anthagents","ANT","Building effective agents","Anthropic","company","guide",2024,"https://www.anthropic.com/engineering/building-effective-agents",["agentic","direct","agentfound"],"İş akışı ile ajan arasındaki farkı ve basit, birleştirilebilir desenleri (zincirleme, yönlendirme, paralel, orkestratör) anlatır.","Explains workflows versus agents and simple, composable patterns: chaining, routing, parallelization, orchestrator-workers."),
+ R("anthctx","ANT","Effective context engineering for AI agents","Anthropic","company","guide",2025,"https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",["agentic","ground","custom"],"Ajanların sınırlı bağlam penceresini hangi bilgiyle, ne zaman dolduracağını tasarlama rehberi.","How to decide what information fills an agent’s limited context window, and when."),
+ R("anthcc","ANT","Claude Code: best practices for agentic coding","Anthropic","company","guide",2025,"https://www.anthropic.com/engineering/claude-code-best-practices",["custom","direct","autonomy","review"],"CLAUDE.md, planlama, test odaklı döngüler ve paralel oturumlarla kodlama ajanı kullanım pratikleri.","Practices for coding agents: CLAUDE.md, planning, test-driven loops and parallel sessions."),
+ R("anthpe","ANT","Prompt engineering overview","Anthropic","company","docs",0,"https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview",["llm"],"Net talimat, örnekler, XML etiketleri ve adım adım düşünme gibi teknikler.","Techniques such as clear instructions, examples, XML tags and step-by-step reasoning."),
+ R("anthcourses","ANT","Anthropic Courses","Anthropic","company","course",0,"https://github.com/anthropics/courses",["llm","agentic","evals"],"API temelleri, prompt mühendisliği, araç kullanımı ve eval’ler için ücretsiz not defterleri.","Free notebooks on API fundamentals, prompt engineering, tool use and evals."),
+ R("oaiguide","OAI","A practical guide to building agents","OpenAI","company","guide",2025,"https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf",["agentic","direct","secure"],"Ajan kullanım durumlarını seçme, orkestrasyon desenleri ve korkuluk tasarımı.","Choosing agent use cases, orchestration patterns and guardrail design."),
+ R("oaicook","OAI","OpenAI Cookbook","OpenAI","company","docs",0,"https://cookbook.openai.com",["llm","ground","evals"],"RAG, eval, yapılandırılmış çıktı ve ajanlar için çalışır örnek kodlar.","Working code examples for RAG, evals, structured output and agents."),
+ R("saif","G","Secure AI Framework (SAIF)","Google","company","framework",0,"https://saif.google",["secure","agentic","prodai"],"YZ sistemleri için güvenlik riskleri ve kontrollerini haritalayan çerçeve.","A framework mapping security risks and controls for AI systems."),
+ R("rulesml","G","Rules of Machine Learning","Google","company","guide",0,"https://developers.google.com/machine-learning/guides/rules-of-ml",["ml","prodai","evals"],"Üretim ML sistemleri için 40’ı aşkın pratik kural; basit başla, metrikleri doğru kur.","40+ practical rules for production ML: start simple, get the metrics right."),
+ R("mlcc","G","Machine Learning Crash Course","Google","company","course",2024,"https://developers.google.com/machine-learning/crash-course",["ml"],"Etkileşimli görselleştirmelerle ML temelleri; 2024’te LLM içerikleriyle yenilendi.","ML fundamentals with interactive visualizations, refreshed in 2024 with LLM content."),
+ R("pair","PAIR","People + AI Guidebook","Google PAIR","company","guide",0,"https://pair.withgoogle.com/guidebook/",["product","comm"],"İnsan odaklı YZ ürünleri tasarlamak için yöntemler ve çalışma sayfaları.","Methods and worksheets for designing human-centered AI products."),
+ R("sre","G","Site Reliability Engineering books","Google","company","book",0,"https://sre.google/books/",["scale","prodai","secure"],"SLO, hata bütçesi, izleme ve olay yönetimi için ücretsiz çevrim içi kitaplar.","Free online books on SLOs, error budgets, monitoring and incident response."),
+ R("engprac","G","Google Engineering Practices: code review","Google","company","guide",0,"https://google.github.io/eng-practices/",["review","scale"],"Kod inceleyenler ve değişiklik yazarları için açık rehber.","An open guide for code reviewers and change authors."),
+ R("webdev","G","web.dev Learn","Google Chrome","company","course",0,"https://web.dev/learn",["fullstack"],"HTML, CSS, erişilebilirlik, performans ve modern web için kurslar.","Courses on HTML, CSS, accessibility, performance and the modern web."),
+ R("msrai","MS","Responsible AI at Microsoft","Microsoft","company","framework",0,"https://www.microsoft.com/en-us/ai/responsible-ai",["secure","product","comm"],"Sorumlu YZ standardı, şeffaflık notları ve uygulama araçları.","Responsible AI standard, transparency notes and practical tools."),
+ R("msgen","MS","Generative AI for Beginners","Microsoft","company","course",0,"https://github.com/microsoft/generative-ai-for-beginners",["llm","ground"],"Prompt’tan RAG’e uzanan ücretsiz, açık kaynak ders serisi.","A free open-source lesson series from prompting to RAG."),
+ R("msag","MS","AI Agents for Beginners","Microsoft","company","course",0,"https://github.com/microsoft/ai-agents-for-beginners",["agentic","autonomy"],"Ajan tasarım desenleri, araç kullanımı ve çoklu ajan sistemleri üzerine ücretsiz dersler.","Free lessons on agent design patterns, tool use and multi-agent systems."),
+ R("hf","HF","Hugging Face Learn","Hugging Face","company","course",0,"https://huggingface.co/learn",["llm","agentic","ml"],"LLM, ajan, MCP ve derin pekiştirmeli öğrenme dahil ücretsiz kurslar.","Free courses including LLMs, agents, MCP and deep reinforcement learning."),
+ R("dlaimap","DLAI","AI Engineering Skills Map","DeepLearning.AI","company","guide",2026,"https://www.deeplearning.ai/resources/ai-engineering-skills",["direct","agency","agentic"],"Bu portalın ilham aldığı, iş ilanı analizine ve uzman görüşmelerine dayanan beceri haritası.","The skills map that inspired this portal, based on job-posting analysis and expert interviews."),
+ R("dlaisc","DLAI","DeepLearning.AI Short Courses","DeepLearning.AI","company","course",0,"https://www.deeplearning.ai/short-courses/",["llm","agentic","evals","ground"],"Ajanlar, RAG, eval ve araçlar üzerine sektör ortaklı kısa kurslar.","Short courses with industry partners on agents, RAG, evals and tooling."),
+ R("batch","DLAI","The Batch","DeepLearning.AI","company","report",0,"https://www.deeplearning.ai/the-batch/",["agency","comm"],"Andrew Ng’nin mektupları ve haftalık YZ haber analizi.","Andrew Ng’s letters and weekly AI news analysis."),
+ R("shapeup","BC","Shape Up","Basecamp (Ryan Singer)","company","book",2019,"https://basecamp.com/shapeup",["loop","direct","product"],"İşi şekillendirme, zaman bütçesi ve küçük ekiplerle teslim etme üzerine ücretsiz kitap.","A free book on shaping work, appetite-based time budgets and shipping with small teams."),
+ R("ycss","YC","Startup School","Y Combinator","company","course",0,"https://www.startupschool.org",["product","loop","agency"],"Fikir doğrulama, kullanıcı bulma ve ürün geliştirme üzerine ücretsiz program.","A free program on validating ideas, finding users and building products."),
+ // Community & standards
+ R("owaspllm","OWASP","OWASP Top 10 for LLM Applications 2026","OWASP GenAI Security Project","community","framework",2026,"https://genai.owasp.org/llm-top-10/",["secure","prodai","agentic","ground"],"7.700’ü aşkın gerçek olay verisine dayanan güncel LLM güvenlik riskleri sınıflandırması (Ağustos 2026).","The updated LLM security risk taxonomy grounded in 7,700+ real incidents (August 2026)."),
+ R("owaspag","OWASP","OWASP Top 10 for Agentic Applications 2026","OWASP GenAI Security Project","community","framework",2025,"https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026",["agentic","autonomy","secure"],"Hedef ele geçirme, araç kötüye kullanımı, bellek ve tedarik zinciri gibi ajanlara özgü on risk (ASI01–ASI10).","Ten agent-specific risks (ASI01–ASI10) such as goal hijack, tool misuse, memory and supply chain."),
+ R("asvs","OWASP","Application Security Verification Standard (ASVS)","OWASP","community","framework",0,"https://owasp.org/www-project-application-security-verification-standard/",["secure","fullstack"],"Web uygulaması güvenlik kontrolleri için doğrulama standardı.","A verification standard for web application security controls."),
+ R("slsa","SLSA","SLSA: Supply-chain Levels for Software Artifacts","OpenSSF","community","framework",0,"https://slsa.dev",["secure","scale"],"Yazılım tedarik zinciri bütünlüğü için kademeli güvence çerçevesi.","A graduated assurance framework for software supply-chain integrity."),
+ R("mcp","MCP","Model Context Protocol","MCP (open standard)","community","docs",0,"https://modelcontextprotocol.io",["custom","agentic"],"Ajanları araçlara ve veri kaynaklarına bağlamak için açık protokol ve şartname.","The open protocol and specification for connecting agents to tools and data sources."),
+ R("agentsmd","A.md","AGENTS.md","AGENTS.md (open format)","community","docs",0,"https://agents.md",["custom"],"Kodlama ajanlarına proje bağlamı vermek için açık dosya formatı.","An open file format for giving coding agents project context."),
+ R("otel","OTel","OpenTelemetry semantic conventions for generative AI","OpenTelemetry (CNCF)","community","docs",0,"https://opentelemetry.io/docs/specs/semconv/gen-ai/",["prodai","scale"],"LLM çağrıları ve ajan adımları için standart iz ve metrik alanları.","Standard trace and metric attributes for LLM calls and agent steps."),
+ R("ragas","RG","Ragas documentation","Ragas","community","docs",0,"https://docs.ragas.io",["evals","ground"],"RAG ve LLM uygulamaları için açık kaynak değerlendirme kütüphanesi.","An open-source evaluation library for RAG and LLM applications."),
+ R("pai","PAI","Partnership on AI","Partnership on AI","community","framework",0,"https://partnershiponai.org",["comm","product"],"Sorumlu YZ uygulamaları için çok paydaşlı araştırma ve kılavuzlar.","Multi-stakeholder research and guidance on responsible AI practice."),
+ R("twelve","12F","The Twelve-Factor App","Adam Wiggins (Heroku)","community","guide",0,"https://12factor.net",["arch","scale"],"Bulutta çalışan, taşınabilir servisler için on iki ilke.","Twelve principles for portable, cloud-native services."),
+ R("sdp","SDP","System Design Primer","Donne Martin (GitHub)","community","guide",0,"https://github.com/donnemartin/system-design-primer",["arch","data","scale"],"Ölçeklenebilir sistem tasarımı için kapsamlı açık kaynak rehber.","A comprehensive open-source guide to scalable system design."),
+ R("mdn","MDN","MDN Web Docs","Mozilla","community","docs",0,"https://developer.mozilla.org",["fullstack"],"Web platformunun başvuru dokümantasyonu.","The reference documentation for the web platform."),
+ R("fastai","fast","Practical Deep Learning for Coders","fast.ai","community","course",0,"https://course.fast.ai",["ml"],"Koddan başlayan, uygulamalı ücretsiz derin öğrenme kursu.","A free, code-first, hands-on deep learning course."),
+ R("zth","AK","Neural Networks: Zero to Hero","Andrej Karpathy","author","course",0,"https://karpathy.ai/zero-to-hero.html",["llm","ml"],"Sinir ağlarını ve bir GPT’yi sıfırdan kodlayarak öğreten video serisi.","A video series building neural networks and a GPT from scratch."),
+ R("fsdl","FSDL","Full Stack Deep Learning","Full Stack Deep Learning","community","course",0,"https://fullstackdeeplearning.com",["prodai","ml","arch"],"Model geliştirmeden üretime YZ ürünleri kurma üzerine kurs ve dersler.","Course and lectures on taking AI products from model to production."),
+ // Universities & academia
+ R("cs336","SU","CS336: Language Modeling from Scratch","Stanford University","academic","course",2025,"https://stanford-cs336.github.io",["llm","ml"],"Tokenizer’dan eğitime, dil modelini baştan sona kurduran ders.","A course that builds a language model end to end, from tokenizer to training."),
+ R("mit191","MIT","MIT 6.S191: Introduction to Deep Learning","MIT","academic","course",0,"https://introtodeeplearning.com",["ml"],"Her yıl güncellenen yoğun derin öğrenme dersi ve laboratuvarları.","An intensive, yearly updated deep learning course with labs."),
+ R("attn","arX","Attention Is All You Need","Vaswani et al. (Google)","academic","paper",2017,"https://arxiv.org/abs/1706.03762",["llm"],"Transformer mimarisini tanıtan temel makale.","The foundational paper introducing the Transformer architecture."),
+ R("kaplan","arX","Scaling Laws for Neural Language Models","Kaplan et al. (OpenAI)","academic","paper",2020,"https://arxiv.org/abs/2001.08361",["llm","ml"],"Model boyutu, veri ve hesaplama ile performans arasındaki güç yasası ilişkileri.","Power-law relationships between model size, data, compute and performance."),
+ R("chin","arX","Training Compute-Optimal Large Language Models","Hoffmann et al. (DeepMind)","academic","paper",2022,"https://arxiv.org/abs/2203.15556",["llm","ml"],"Chinchilla: sabit hesaplama bütçesinde model ve veri boyutunun dengelenmesi.","Chinchilla: balancing model and data size under a fixed compute budget."),
+ R("instr","arX","Training language models to follow instructions with human feedback","Ouyang et al. (OpenAI)","academic","paper",2022,"https://arxiv.org/abs/2203.02155",["ml","llm"],"InstructGPT ve RLHF yaklaşımının temel makalesi.","The core paper behind InstructGPT and RLHF."),
+ R("cai","arX","Constitutional AI: Harmlessness from AI Feedback","Bai et al. (Anthropic)","academic","paper",2022,"https://arxiv.org/abs/2212.08073",["ml","secure"],"İlkeler listesiyle YZ geri bildiriminden zararsızlık eğitimi.","Training for harmlessness from AI feedback guided by a set of principles."),
+ R("dpo","arX","Direct Preference Optimization","Rafailov et al. (Stanford)","academic","paper",2023,"https://arxiv.org/abs/2305.18290",["ml"],"Ödül modeli olmadan tercih verisiyle doğrudan hizalama.","Aligning directly on preference data without a separate reward model."),
+ R("lora","arX","LoRA: Low-Rank Adaptation of Large Language Models","Hu et al. (Microsoft)","academic","paper",2021,"https://arxiv.org/abs/2106.09685",["llm","ml"],"Düşük maliyetli ince ayarın standart yöntemi.","The standard method for low-cost fine-tuning."),
+ R("cot","arX","Chain-of-Thought Prompting Elicits Reasoning in Large Language Models","Wei et al. (Google)","academic","paper",2022,"https://arxiv.org/abs/2201.11903",["llm"],"Ara akıl yürütme adımlarının performansa etkisini gösteren makale.","Shows how intermediate reasoning steps improve performance."),
+ R("rag","arX","Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks","Lewis et al. (Meta AI)","academic","paper",2020,"https://arxiv.org/abs/2005.11401",["ground"],"RAG kavramını tanıtan temel makale.","The foundational paper introducing RAG."),
+ R("lost","arX","Lost in the Middle: How Language Models Use Long Contexts","Liu et al. (Stanford)","academic","paper",2023,"https://arxiv.org/abs/2307.03172",["ground","llm"],"Uzun bağlamın ortasındaki bilginin daha az kullanıldığını gösterir.","Shows that information in the middle of long contexts is used less."),
+ R("graphrag","arX","From Local to Global: A Graph RAG Approach to Query-Focused Summarization","Edge et al. (Microsoft)","academic","paper",2024,"https://arxiv.org/abs/2404.16130",["ground"],"Bilgi grafiğiyle bütüncül soru yanıtlama: GraphRAG.","GraphRAG: holistic question answering with a knowledge graph."),
+ R("react","arX","ReAct: Synergizing Reasoning and Acting in Language Models","Yao et al. (Princeton / Google)","academic","paper",2022,"https://arxiv.org/abs/2210.03629",["agentic","agentfound"],"Akıl yürütme ile eylemi iç içe geçiren ajan döngüsünün temeli.","The basis of the agent loop that interleaves reasoning and acting."),
+ R("toolf","arX","Toolformer: Language Models Can Teach Themselves to Use Tools","Schick et al. (Meta AI)","academic","paper",2023,"https://arxiv.org/abs/2302.04761",["agentic"],"Modellerin API çağırmayı kendi kendine öğrenmesi.","Models learning to call APIs in a self-supervised way."),
+ R("reflex","arX","Reflexion: Language Agents with Verbal Reinforcement Learning","Shinn et al.","academic","paper",2023,"https://arxiv.org/abs/2303.11366",["agentic","autonomy"],"Ajanların sözel öz-geri bildirimle denemeler arasında iyileşmesi.","Agents improving across attempts through verbal self-feedback."),
+ R("genag","arX","Generative Agents: Interactive Simulacra of Human Behavior","Park et al. (Stanford / Google)","academic","paper",2023,"https://arxiv.org/abs/2304.03442",["agentic"],"Bellek, yansıtma ve planlama içeren ajan mimarisi.","An agent architecture with memory, reflection and planning."),
+ R("judge","arX","Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena","Zheng et al.","academic","paper",2023,"https://arxiv.org/abs/2306.05685",["evals"],"LLM’i değerlendirici olarak kullanmanın güçlü ve zayıf yönleri.","Strengths and biases of using an LLM as an evaluator."),
+ R("swebench","arX","SWE-bench: Can Language Models Resolve Real-World GitHub Issues?","Jimenez et al. (Princeton)","academic","paper",2023,"https://arxiv.org/abs/2310.06770",["agentfound","review","evals"],"Kodlama ajanlarını gerçek GitHub sorunlarıyla ölçen benchmark.","The benchmark that measures coding agents on real GitHub issues."),
+ // Authors & experts
+ R("huyenaie","CH","AI Engineering: Building Applications with Foundation Models","Chip Huyen (O’Reilly)","author","book",2025,"https://www.oreilly.com/library/view/ai-engineering/9781098166298/",["evals","ground","prodai","llm"],"Temel modellerle uygulama geliştirmenin uçtan uca rehberi: eval, RAG, ajanlar, ince ayar.","An end-to-end guide to building with foundation models: evals, RAG, agents, fine-tuning."),
+ R("huyendmls","CH","Designing Machine Learning Systems","Chip Huyen (O’Reilly)","author","book",2022,"https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/",["ml","prodai","data"],"Üretimde ML sistemleri tasarlama, veri ve izleme üzerine kitap.","A book on designing production ML systems, data and monitoring."),
+ R("ddia","MK","Designing Data-Intensive Applications","Martin Kleppmann (O’Reilly)","author","book",2017,"https://dataintensive.net",["data","arch","scale"],"Veri sistemlerinin güvenilirlik, ölçeklenebilirlik ve bakım ödünleşimleri.","Reliability, scalability and maintainability tradeoffs in data systems."),
+ R("weng","LW","LLM Powered Autonomous Agents","Lilian Weng","author","guide",2023,"https://lilianweng.github.io/posts/2023-06-23-agent/",["agentic","agentfound"],"Planlama, bellek ve araç kullanımıyla ajan bileşenlerinin klasik özeti.","The classic overview of agent components: planning, memory and tool use."),
+ R("yan","EY","Patterns for Building LLM-based Systems & Products","Eugene Yan","author","guide",2023,"https://eugeneyan.com/writing/llm-patterns/",["evals","ground","product"],"Eval, RAG, önbellek, korkuluk ve geri bildirim desenleri.","Patterns for evals, RAG, caching, guardrails and feedback."),
+ R("hamel","HH","Your AI Product Needs Evals","Hamel Husain","author","guide",2024,"https://hamel.dev/blog/posts/evals/",["evals","review"],"Hata analizinden otomatik eval’e uzanan pratik yaklaşım.","A practical path from error analysis to automated evals."),
+ R("pg","PG","Do Things that Don’t Scale","Paul Graham","author","guide",2013,"https://paulgraham.com/ds.html",["loop","product","agency"],"Erken aşamada kullanıcıya elle ulaşmanın değeri üzerine klasik deneme.","The classic essay on doing unscalable things early to win users."),
+ R("nng","NN/g","Nielsen Norman Group articles","Nielsen Norman Group","research","guide",0,"https://www.nngroup.com/articles/",["product"],"Kullanılabilirlik ve kullanıcı araştırması üzerine kanıta dayalı makaleler.","Evidence-based articles on usability and user research.")
+];
+
+const STATS=[
+ {v:{tr:"%88",en:"88%"},l:{tr:"Kurumlarda YZ benimseme oranı",en:"Organizational AI adoption"},r:"aiidx"},
+ {v:{tr:"%60 → ~%100",en:"60% → ~100%"},l:{tr:"SWE-bench Verified’da bir yıllık sıçrama",en:"One-year jump on SWE-bench Verified"},r:"aiidx"},
+ {v:{tr:"362",en:"362"},l:{tr:"Belgelenmiş YZ olayı (bir önceki yıl 233)",en:"Documented AI incidents (233 the year before)"},r:"aiidx"},
+ {v:{tr:"%66",en:"66%"},l:{tr:"Kodlama asistanı veya ajanı kullanan geliştiriciler",en:"Developers using coding assistants or agents"},r:"so26"},
+ {v:{tr:"%24",en:"24%"},l:{tr:"İşvereni onaylı araç ya da resmî YZ yönergesi sunan geliştiriciler",en:"Developers whose employer provides approved tools or formal AI guidance"},r:"so26"},
+ {v:{tr:"100+ / 30+",en:"100+ / 30+"},l:{tr:"Uzman yazar ve destekleyen ülke/kuruluş",en:"Expert authors and backing countries/organizations"},r:"aisr26"},
+ {v:{tr:"%25 / %3,3",en:"25% / 3.3%"},l:{tr:"Üretken YZ’ye potansiyel maruz istihdam / en yüksek maruziyet",en:"Employment potentially exposed to GenAI / highest exposure"},r:"ilo25"},
+ {v:{tr:"2 Ara 2027",en:"2 Dec 2027"},l:{tr:"AB AI Act Annex III yüksek risk yükümlülükleri için yeni tarih",en:"New date for EU AI Act Annex III high-risk obligations"},r:"euact"}
+];
+
+const TL=[
+ {d:"2021-08-20",t:{tr:"Türkiye Ulusal Yapay Zekâ Stratejisi 2021–2025 Resmî Gazete’de yayımlandı",en:"Türkiye’s National AI Strategy 2021–2025 published in the Official Gazette"},r:"cbddo"},
+ {d:"2021-11",t:{tr:"UNESCO YZ Etiği Tavsiyesi 193 üye devletçe kabul edildi",en:"UNESCO Recommendation on the Ethics of AI adopted by 193 member states"},r:"unesco"},
+ {d:"2023-01-26",t:{tr:"NIST AI Risk Management Framework 1.0 yayımlandı",en:"NIST AI Risk Management Framework 1.0 released"},r:"nistrmf"},
+ {d:"2023-12",t:{tr:"ISO/IEC 42001 YZ yönetim sistemi standardı yayımlandı",en:"ISO/IEC 42001 AI management-system standard published"},r:"iso42001"},
+ {d:"2024-05",t:{tr:"OECD YZ İlkeleri güncellendi",en:"OECD AI Principles updated"},r:"oecdp"},
+ {d:"2024-07-26",t:{tr:"NIST AI 600-1 Üretken YZ Profili yayımlandı",en:"NIST AI 600-1 Generative AI Profile released"},r:"nist600"},
+ {d:"2024-08-01",t:{tr:"AB AI Act yürürlüğe girdi",en:"EU AI Act entered into force"},r:"euact"},
+ {d:"2024-09-05",t:{tr:"Avrupa Konseyi YZ Çerçeve Sözleşmesi imzaya açıldı",en:"Council of Europe AI Framework Convention opened for signature"},r:"coe"},
+ {d:"2025-01",t:{tr:"Uluslararası YZ Güvenliği Raporu’nun ilk tam baskısı yayımlandı",en:"First full International AI Safety Report published"},r:"aisr26"},
+ {d:"2025-02-02",t:{tr:"AI Act yasaklı uygulamalar hükümleri uygulanmaya başladı",en:"AI Act prohibitions began to apply"},r:"euact"},
+ {d:"2025-08-02",t:{tr:"AI Act genel amaçlı YZ (GPAI) yükümlülükleri başladı",en:"AI Act general-purpose AI (GPAI) obligations began"},r:"euact"},
+ {d:"2025-11-19",t:{tr:"Avrupa Komisyonu Digital Omnibus on AI önerisini sundu",en:"European Commission proposed the Digital Omnibus on AI"},r:"euact"},
+ {d:"2025-11-24",t:{tr:"KVKK Üretken YZ ve Kişisel Verilerin Korunması Rehberi’ni yayımladı",en:"KVKK published its Generative AI and Personal Data Protection Guide"},r:"kvkk"},
+ {d:"2025-12-09",t:{tr:"OWASP Ajan Uygulamaları için Top 10 (2026) duyuruldu",en:"OWASP Top 10 for Agentic Applications (2026) announced"},r:"owaspag"},
+ {d:"2026-02-03",t:{tr:"Uluslararası YZ Güvenliği Raporu 2026 yayımlandı",en:"International AI Safety Report 2026 published"},r:"aisr26"},
+ {d:"2026-04",t:{tr:"Stanford AI Index 2026 yayımlandı",en:"Stanford AI Index 2026 published"},r:"aiidx"},
+ {d:"2026-04-07",t:{tr:"NIST kritik altyapı için AI RMF profili kavram notunu yayımladı",en:"NIST released a concept note for a critical-infrastructure AI RMF profile"},r:"nistrmf"},
+ {d:"2026-05-07",t:{tr:"AB kurumları Digital Omnibus için geçici anlaşmaya vardı",en:"EU institutions reached a provisional Digital Omnibus agreement"},r:"euact"},
+ {d:"2026-08-03",t:{tr:"OWASP LLM Uygulamaları için Top 10 (2026) yayımlandı",en:"OWASP Top 10 for LLM Applications (2026) published"},r:"owaspllm"},
+ {d:"2026-10-08",t:{tr:"State of AI Report 2026 yayımlandı",en:"State of AI Report 2026 published"},r:"soai"},
+ {d:"2027-12-02",t:{tr:"AI Act Annex III bağımsız yüksek riskli sistem yükümlülükleri",en:"AI Act obligations for stand-alone Annex III high-risk systems"},r:"euact"},
+ {d:"2028-08-02",t:{tr:"AI Act Annex I ürünlerine gömülü yüksek riskli YZ yükümlülükleri",en:"AI Act obligations for high-risk AI embedded in Annex I products"},r:"euact"}
+];
+
+const CAREERS=[
+ {id:"aieng",n:{tr:"AI Engineer",en:"AI Engineer"},d:{tr:"Temel modellerden güvenilir ürünler kurar: bağlam, ajanlar, eval ve üretimde işletim.",en:"Builds reliable products on foundation models: context, agents, evals and production operations."},k:["llm","ground","agentic","evals","prodai","fullstack","review"]},
+ {id:"mleng",n:{tr:"ML Engineer",en:"ML Engineer"},d:{tr:"Model eğitir, değerlendirir ve servis eder; veri ve ölçek tarafında derinleşir.",en:"Trains, evaluates and serves models, going deep on data and scale."},k:["ml","llm","evals","data","prodai","scale"]},
+ {id:"fsai",n:{tr:"YZ-yerli full-stack geliştirici",en:"AI-native full-stack developer"},d:{tr:"Kodlama ajanlarıyla ön yüzden arka uca uçtan uca ürün çıkarır.",en:"Ships end-to-end products from front end to back end with coding agents."},k:["fullstack","llm","agentic","arch","secure","direct","autonomy"]},
+ {id:"dataeng",n:{tr:"Veri mühendisi (YZ)",en:"Data engineer (AI)"},d:{tr:"YZ sistemlerine temiz, taze ve yönetişimli veri sağlayan boru hatlarını kurar.",en:"Builds pipelines that feed AI systems clean, fresh, governed data."},k:["data","ground","arch","scale","secure","evals"]},
+ {id:"platform",n:{tr:"Platform / LLMOps mühendisi",en:"Platform / LLMOps engineer"},d:{tr:"Dağıtım, gözlemlenebilirlik, maliyet ve ajan altyapısını işletir.",en:"Runs deployment, observability, cost and agent infrastructure."},k:["scale","prodai","secure","custom","autonomy","arch"]},
+ {id:"secai",n:{tr:"YZ güvenlik mühendisi",en:"AI security engineer"},d:{tr:"Prompt injection, veri sızıntısı ve ajan risklerine karşı savunma tasarlar.",en:"Designs defenses against prompt injection, data exfiltration and agent risks."},k:["secure","agentic","autonomy","prodai","review","data"]},
+ {id:"prodeng",n:{tr:"Ürün mühendisi / YZ ürün yöneticisi",en:"Product engineer / AI PM"},d:{tr:"Ne inşa edileceğine karar verir, hızlı döngüler kurar ve paydaşları hizalar.",en:"Decides what to build, runs fast loops and aligns stakeholders."},k:["product","loop","comm","agency","evals","direct"]}
+];
+
+const SKILLX={
+ llm:{k:["Tokenization","Context window","Sampling (temperature, top-p)","Prompt caching","Tool calling","Reasoning effort"],pr:{tr:"Aynı görevi üç farklı model ve iki sıcaklık değeriyle çalıştıran küçük bir karşılaştırma aracı yaz; kaliteyi, gecikmeyi ve maliyeti tabloya dök.",en:"Write a small harness that runs one task across three models and two temperatures; tabulate quality, latency and cost."},pit:{tr:"Tek bir “en iyi model”e bağlanmak ve daha küçük bir modelin yapabileceği işleri pahalı modele yüklemek.",en:"Locking into one “best model” and sending work a smaller, cheaper model could handle."}},
+ ground:{k:["Chunking","Embeddings","Hybrid search (BM25 + vector)","Re-ranking","GraphRAG","Semantic layer"],pr:{tr:"Kendi PDF arşivin için hibrit arama ve yeniden sıralama içeren bir RAG kur; 30 soruluk bir eval setiyle getirme isabetini ölç.",en:"Build a RAG over your own PDFs with hybrid search and re-ranking; measure retrieval hit rate with a 30-question eval set."},pit:{tr:"Getirme kalitesini ölçmeden yalnızca son cevaba bakmak; sorun çoğu zaman yanlış parçaların gelmesidir.",en:"Judging only the final answer without measuring retrieval; the problem is often the wrong chunks coming back."}},
+ agentic:{k:["Prompt chaining","Routing","Parallelization","Orchestrator–workers","Memory","Guardrails"],pr:{tr:"Bir destek bileti sınıflandırma akışını önce zincirleme iş akışı, sonra araç kullanan bir ajan olarak kur; başarı oranını ve maliyeti karşılaştır.",en:"Build a ticket-triage flow first as a chained workflow, then as a tool-using agent; compare success rate and cost."},pit:{tr:"Basit bir iş akışı yeterken otonom ajana geçmek; karmaşıklık ve hata yüzeyi boşuna büyür.",en:"Reaching for an autonomous agent when a simple workflow would do; complexity and failure surface grow for nothing."}},
+ evals:{k:["Golden dataset","Code-based assertions","LLM-as-a-judge","Human review","Trace analysis","Error taxonomy"],pr:{tr:"Bir LLM uygulamasının 50 izini incele, hataları kategorilere ayır, en sık iki hata için otomatik eval yaz ve CI’a bağla.",en:"Review 50 traces of an LLM app, categorize failures, write automated evals for the top two and wire them into CI."},pit:{tr:"Hazır genel metriklere güvenip kendi ürününe özgü hata modlarını hiç incelememek.",en:"Trusting generic off-the-shelf metrics and never studying your product’s own failure modes."}},
+ prodai:{k:["Tracing","Drift detection","Canary release","Cost per request","Model routing","Incident runbook"],pr:{tr:"Uygulamana OpenTelemetry tabanlı izleme ekle; istek başına maliyet ve gecikme panosu kur, eşik aşımında alarm üret.",en:"Add OpenTelemetry-based tracing; build a cost-and-latency-per-request dashboard with threshold alerts."},pit:{tr:"Prompt değişikliklerini test etmeden canlıya almak; küçük bir düzenleme kaliteyi sessizce düşürebilir.",en:"Shipping prompt changes untested; a small edit can silently degrade quality."}},
+ ml:{k:["Supervised learning","Reinforcement learning","Bias/variance","Train/dev/test split","Overfitting","Error analysis"],pr:{tr:"Açık bir veri setinde klasik bir modeli (ör. gradient boosting) LLM tabanlı bir sınıflandırıcıyla doğruluk, hız ve maliyet açısından karşılaştır.",en:"On an open dataset, compare a classic model (e.g. gradient boosting) with an LLM classifier on accuracy, speed and cost."},pit:{tr:"Her problemi LLM’le çözmeye çalışmak; bazen küçük klasik bir model daha ucuz, hızlı ve isabetlidir.",en:"Throwing an LLM at every problem; sometimes a small classic model is cheaper, faster and more accurate."}},
+ fullstack:{k:["Component model","SSR / CSR","REST & GraphQL","Auth (OAuth, sessions)","Caching","Accessibility"],pr:{tr:"Kimlik doğrulamalı, veritabanlı ve LLM özellikli küçük bir web uygulaması yayınla; erişilebilirlik denetiminden geçir.",en:"Ship a small web app with auth, a database and an LLM feature; run it through an accessibility audit."},pit:{tr:"Ajanın yazdığı ön yüz kodunu anlamadan kabul etmek; durum hataları ve güvenlik açıkları birikir.",en:"Accepting agent-written front-end code you don’t understand; state bugs and security holes pile up."}},
+ data:{k:["Data modeling","Access patterns","ACID transactions","Indexing","Data lineage","PII handling"],pr:{tr:"Aynı uygulama için ilişkisel ve doküman veri modeli tasarla; erişim desenlerine göre hangisinin neden kazandığını yaz.",en:"Design both a relational and a document model for one app; write up which wins for your access patterns and why."},pit:{tr:"Veri modelini “sonra düzeltiriz” diye geçmek; veri, değiştirilmesi en zor katmandır.",en:"Treating the data model as “we’ll fix it later”; data is the hardest layer to change."}},
+ arch:{k:["Decomposition","State placement","Monolith vs microservices","Latency budget","Build vs buy","ADR"],pr:{tr:"Tek bir ürün için prototip, ilk üretim ve ölçek aşamalarına ait üç mimari çizimi ve kısa ADR’ler hazırla.",en:"Draw three architectures for one product (prototype, first production, scale) with short ADRs."},pit:{tr:"Prototip aşamasında mikroservis kurmak; erken karmaşıklık hızı öldürür.",en:"Going microservices at the prototype stage; premature complexity kills velocity."}},
+ secure:{k:["Test pyramid","Threat modeling","Graceful degradation","Rate limiting","Dependency scanning","Least privilege"],pr:{tr:"Uygulamanın tehdit modelini çıkar, bağımlılık taraması ekle ve dış API kesintisinde zarif bozulmayı kanıtlayan bir test yaz.",en:"Threat-model your app, add dependency scanning, and write a test proving graceful degradation when an external API fails."},pit:{tr:"Güvenliği yayından sonraya bırakmak; ajanların ürettiği kod hacmi açıkları da çoğaltır.",en:"Leaving security until after launch; agent-scale code volume multiplies vulnerabilities too."}},
+ scale:{k:["CI/CD","Blue-green / canary","SLO & error budget","Load balancing","Sharding & replication","Tech debt"],pr:{tr:"Bir servis için SLO tanımla, kanarya dağıtımı kur ve yük testiyle darboğazı bul.",en:"Define an SLO for a service, set up a canary deploy, and find the bottleneck with a load test."},pit:{tr:"Gerçek yükü ölçmeden ölçeklemek; maliyet artar, asıl darboğaz yerinde kalır.",en:"Scaling without measuring real load; costs rise while the real bottleneck stays."}},
+ direct:{k:["Spec","Execution plan","Task decomposition","Definition of done","Risk-based effort","Planning artifacts"],pr:{tr:"Bir özelliği ajana vermeden önce bir sayfalık spesifikasyon ve doğrulanabilir adımlardan oluşan bir plan yaz; planlı ve plansız denemeyi karşılaştır.",en:"Before delegating a feature, write a one-page spec and a plan of verifiable steps; compare a planned run with an unplanned one."},pit:{tr:"Belirsiz bir istemle büyük bir işi tek seferde ajana bırakmak.",en:"Handing a large task to an agent in one shot with a vague prompt."}},
+ autonomy:{k:["Autonomy levels","Permission modes","Sandboxing","Parallel agents","Context handoff","Approval gates"],pr:{tr:"Aynı repoda iki paralel ajan oturumunu ayrı dallarda çalıştır; izinleri sınırla ve birleştirirken çakışmaları yönet.",en:"Run two parallel agent sessions on separate branches of one repo; restrict permissions and manage conflicts when merging."},pit:{tr:"Üretim verisine veya kimlik bilgilerine yakın yerde ajanı geniş izinlerle çalıştırmak.",en:"Running agents with broad permissions near production data or credentials."}},
+ review:{k:["Behavioral vs functional tests","Agentic code review","Screenshot evidence","Security audit","Eval sets","Human-in-the-loop"],pr:{tr:"Ajanın açtığı PR’lar için otomatik test, ajanlı kod incelemesi ve güvenlik taraması içeren bir doğrulama hattı kur.",en:"Build a verification pipeline for agent PRs: automated tests, agentic code review and a security scan."},pit:{tr:"Testler geçti diye işi bitmiş saymak; testlerin amaca uyup uymadığını da sorgula.",en:"Calling work done because tests pass; also question whether the tests match the goal."}},
+ custom:{k:["AGENTS.md / CLAUDE.md","Skills","Hooks","MCP servers","Plugins","Retrospectives"],pr:{tr:"Projen için bir AGENTS.md yaz, bir lint hook’u ve bir MCP sunucusu ekle; bir hafta sonra bağlam dosyasını öğrenimlerle güncelle.",en:"Write an AGENTS.md for your project, add a lint hook and one MCP server; after a week, update the context file with learnings."},pit:{tr:"Bağlam dosyasını bir kez yazıp unutmak; eskiyen bağlam ajanı yanlış yönlendirir.",en:"Writing the context file once and forgetting it; stale context misleads the agent."}},
+ agentfound:{k:["Agent loop","Context window management","Codebase search","Subagents","Tool-call cost","Failure modes"],pr:{tr:"Basit bir ajan döngüsünü sıfırdan yaz (araç çağrısı, gözlem, karar); bir hata modunu bilerek tetikleyip gözlemle.",en:"Write a minimal agent loop from scratch (tool call, observation, decision); deliberately trigger one failure mode and observe it."},pit:{tr:"Ajanı kara kutu gibi görmek ve raydan çıktığını geç fark etmek.",en:"Treating the agent as a black box and noticing too late that it went off track."}},
+ loop:{k:["Prototype","MVP","Small batches","Feedback loop","North-star metric","Technical experiment"],pr:{tr:"Bir fikri 48 saatte prototipe dönüştür, 5 kullanıcıyla dene ve sonraki adımı öğrendiklerine göre yaz.",en:"Turn an idea into a prototype in 48 hours, test it with 5 users, and write the next step from what you learned."},pit:{tr:"Geri bildirim almadan haftalarca cila yapmak.",en:"Polishing for weeks without getting feedback."}},
+ product:{k:["User interviews","Jobs to be done","A/B testing","Unit economics","Design sense","Spec writing"],pr:{tr:"Bir YZ özelliği için 3 kullanıcı görüşmesi yap, problemi yeniden tanımla ve birim ekonomisini içeren kısa bir ürün notu yaz.",en:"Run 3 user interviews for an AI feature, reframe the problem, and write a short product note including unit economics."},pit:{tr:"Teknolojinin yapabildiğinden yola çıkıp kullanıcının gerçek ihtiyacını atlamak.",en:"Starting from what the tech can do and skipping what users actually need."}},
+ comm:{k:["Stakeholder map","Feasibility memo","Live demo","Plain-language explanation","Cross-functional alignment","Risk communication"],pr:{tr:"Teknik olmayan bir ekibe bir YZ girişiminin fizibilitesini, risklerini ve maliyetini anlatan bir sayfalık not ve 5 dakikalık demo hazırla.",en:"Prepare a one-page memo and a 5-minute demo explaining an AI initiative’s feasibility, risks and cost to a non-technical team."},pit:{tr:"Jargonla konuşup paydaşları karar veremez hâlde bırakmak.",en:"Speaking in jargon and leaving stakeholders unable to decide."}},
+ agency:{k:["Ownership","Bias for action","Prioritization","Impact measurement","Learning habit","Ambiguity tolerance"],pr:{tr:"Ekibinde YZ ile çözülebilecek bir problemi bul, bir sayfalık öneri yaz, onay al ve iki haftada ölçülebilir bir ilk sürüm çıkar.",en:"Find a problem on your team AI could solve, write a one-page proposal, get buy-in, and ship a measurable first version in two weeks."},pit:{tr:"Mükemmel talimatı beklerken fırsatı kaçırmak.",en:"Waiting for perfect instructions while the opportunity passes."}}
+};
+
+const GLOSS=[
+ {t:["Token","Token"],d:["Modelin metni işlediği en küçük birim; maliyet ve bağlam sınırı token’la ölçülür.","The smallest unit a model processes; cost and context limits are measured in tokens."]},
+ {t:["Bağlam penceresi","Context window"],d:["Modelin tek çağrıda görebildiği toplam token miktarı.","The total number of tokens a model can see in a single call."]},
+ {t:["Sıcaklık","Temperature"],d:["Örneklemenin rastgeleliğini ayarlayan parametre; düşük değer daha tutarlı çıktı verir.","A sampling parameter controlling randomness; lower values give more consistent output."]},
+ {t:["Gömme (embedding)","Embedding"],d:["Metnin anlamını sayısal vektöre dönüştüren temsil; anlamsal aramanın temeli.","A numeric vector representation of meaning; the basis of semantic search."]},
+ {t:["Vektör veritabanı","Vector database"],d:["Gömmeleri saklayıp benzerliğe göre hızlı arama yapan veri deposu.","A store that holds embeddings and searches them by similarity."]},
+ {t:["Getirmeyle zenginleştirilmiş üretim","Retrieval-augmented generation (RAG)"],d:["Cevap üretmeden önce ilgili belgeleri getirip bağlama ekleme yöntemi.","Fetching relevant documents and adding them to context before generating an answer."]},
+ {t:["Bilgi grafiği","Knowledge graph"],d:["Varlıkları ve ilişkilerini düğüm ve kenar olarak tutan veri yapısı.","A data structure storing entities and their relationships as nodes and edges."]},
+ {t:["Semantik katman","Semantic layer"],d:["Yapısal veriyi iş kavramlarıyla tanımlayıp modelin doğru sorgulamasını sağlayan katman.","A layer defining structured data in business terms so models query it correctly."]},
+ {t:["İnce ayar","Fine-tuning"],d:["Önceden eğitilmiş bir modeli göreve özgü veriyle ek eğitimden geçirme.","Further training a pre-trained model on task-specific data."]},
+ {t:["Damıtma","Distillation"],d:["Büyük modelin davranışını daha küçük ve ucuz bir modele aktarma.","Transferring a large model’s behavior into a smaller, cheaper one."]},
+ {t:["İnsan geri bildirimiyle pekiştirmeli öğrenme","RLHF"],d:["Modeli insan tercih verisiyle hizalayan eğitim yaklaşımı.","A training approach aligning a model with human preference data."]},
+ {t:["Halüsinasyon","Hallucination"],d:["Modelin akıcı ama yanlış ya da uydurma bilgi üretmesi.","A model producing fluent but false or fabricated information."]},
+ {t:["Prompt enjeksiyonu","Prompt injection"],d:["Girdiye gizlenmiş talimatlarla modelin davranışını ele geçirme saldırısı.","An attack that hijacks model behavior through instructions hidden in input."]},
+ {t:["Korkuluk","Guardrail"],d:["Girdi ve çıktıları denetleyip istenmeyen davranışı engelleyen kontrol.","A control that checks inputs and outputs to block unwanted behavior."]},
+ {t:["Araç çağırma","Tool calling"],d:["Modelin yapılandırılmış biçimde fonksiyon veya API çağırabilmesi.","A model’s ability to call functions or APIs in a structured way."]},
+ {t:["Model Bağlam Protokolü","Model Context Protocol (MCP)"],d:["Ajanları araçlara ve veri kaynaklarına bağlayan açık standart.","An open standard connecting agents to tools and data sources."]},
+ {t:["Ajan çerçevesi","Agent harness"],d:["LLM’in etrafındaki döngü: araçlar, bağlam yönetimi, izinler ve durma koşulları.","The loop around an LLM: tools, context management, permissions and stop conditions."]},
+ {t:["Alt ajan","Subagent"],d:["Ana ajanın bir alt görevi devrettiği, kendi bağlamıyla çalışan ajan.","An agent with its own context to which the main agent delegates a subtask."]},
+ {t:["İş akışı ve ajan","Workflow vs agent"],d:["İş akışında adımları sen belirlersin; ajanda model bir sonraki adımı kendisi seçer.","In a workflow you define the steps; in an agent the model picks its next step."]},
+ {t:["Bağlam mühendisliği","Context engineering"],d:["Modele hangi bilginin ne zaman ve hangi biçimde verileceğini tasarlama.","Designing what information reaches the model, when and in what form."]},
+ {t:["Değerlendirme (eval)","Eval"],d:["Sistemin kalitesini tekrarlanabilir biçimde ölçen test seti ve ölçüt.","A test set and criterion that measure system quality repeatably."]},
+ {t:["Hakem olarak LLM","LLM-as-a-judge"],d:["Çıktıları başka bir LLM’e puanlatma; önyargıları kalibre edilmelidir.","Having another LLM grade outputs; its biases must be calibrated."]},
+ {t:["İz (trace)","Trace"],d:["Bir isteğin tüm adımlarının, araç çağrılarının ve çıktılarının kaydı.","A record of every step, tool call and output for one request."]},
+ {t:["Hata analizi","Error analysis"],d:["Başarısız örnekleri inceleyip kategorilere ayırarak öncelik belirleme.","Reviewing and categorizing failures to decide what to fix first."]},
+ {t:["Sapma","Drift"],d:["Canlı veri veya davranışın zamanla değişip performansı düşürmesi.","Live data or behavior shifting over time and degrading performance."]},
+ {t:["Gözlemlenebilirlik","Observability"],d:["Log, metrik ve izlerle sistemin iç durumunu dışarıdan anlayabilme.","Understanding a system’s internal state from logs, metrics and traces."]},
+ {t:["Regresyon testi","Regression test"],d:["Bir değişikliğin önceden çalışan davranışı bozmadığını doğrulayan test.","A test confirming a change didn’t break behavior that worked before."]},
+ {t:["Sürekli entegrasyon ve dağıtım","CI/CD"],d:["Kod değişikliklerini otomatik test edip güvenle yayına alma hattı.","A pipeline that automatically tests and safely releases code changes."]},
+ {t:["Etki alanı","Blast radius"],d:["Bir hatanın sistemde ne kadar geniş alanı etkileyebileceği.","How much of the system a single failure can affect."]},
+ {t:["Zarif bozulma","Graceful degradation"],d:["Bir bileşen çökse de sistemin sınırlı ama kullanılabilir çalışmaya devam etmesi.","Continuing to work in a limited but usable way when a component fails."]},
+ {t:["Parçalama","Sharding"],d:["Veriyi birden çok sunucuya bölerek ölçekleme.","Scaling by splitting data across multiple servers."]},
+ {t:["Sola kaydırma","Shift left"],d:["Güvenlik ve testi geliştirme sürecinin başına taşıma yaklaşımı.","Moving security and testing earlier in the development process."]},
+ {t:["Spesifikasyon","Spec"],d:["Gereksinimleri, teknik tasarımı ve kabul ölçütlerini tanımlayan belge.","A document defining requirements, technical design and acceptance criteria."]},
+ {t:["Minimum uygulanabilir ürün","MVP"],d:["Değeri kanıtlamaya yetecek en küçük ürün sürümü.","The smallest product version that proves value."]},
+ {t:["A/B testi","A/B test"],d:["İki sürümü kullanıcı gruplarında karşılaştırıp etkisini ölçme.","Comparing two versions across user groups to measure impact."]},
+ {t:["Sapma / varyans","Bias / variance"],d:["Modelin eksik öğrenme ile aşırı öğrenme arasındaki dengesini anlatan çerçeve.","The framework describing a model’s balance between underfitting and overfitting."]},
+ {t:["Veri sızdırma","Data exfiltration"],d:["Hassas verinin yetkisiz biçimde sistem dışına çıkarılması; ajanlarda kritik risk.","Unauthorized movement of sensitive data out of a system; a key agent risk."]},
+ {t:["Hook","Hook"],d:["Ajan döngüsünde belirli olaylarda otomatik çalışan komut (ör. her düzenlemede lint).","A command that runs automatically on agent events (e.g. lint on each edit)."]},
+ {t:["Ajan becerisi","Agent skill"],d:["Ajanın gerektiğinde yüklediği talimat, betik ve kaynak paketi.","A package of instructions, scripts and resources an agent loads when needed."]},
+ {t:["Kalıcı bağlam dosyası","AGENTS.md / CLAUDE.md"],d:["Ajana kod tabanı kuralları, mimari ve komutları anlatan proje dosyası.","A project file telling the agent about codebase conventions, architecture and commands."]}
+];
+
+/* ---------- Roles ---------- */
+function careerReady(c){const d=c.k.reduce((a,id)=>a+cnt(id),0);return{d,t:c.k.length*4,r:d/(c.k.length*4)}}
+function applyRole(){
+ const svg=$("#map");if(!svg)return;const c=CAREERS.find(x=>x.id===state.career);
+ if(c)svg.setAttribute("data-role",c.id);else svg.removeAttribute("data-role");
+ svg.querySelectorAll(".m-node").forEach(n=>n.classList.toggle("inr",!!c&&c.k.includes(n.dataset.s)));
+}
+function skillRow(s){
+ const p=pOf(s.p);const b=document.createElement("button");b.type="button";b.className="row";
+ b.innerHTML=`<span class="code" style="color:var(${p.color})"></span><span><span class="rt"></span><span class="rs"></span></span><span class="rm"><small></small><span class="bar"><i style="width:${pct(s.id)*100}%;background:var(${p.color})"></i></span></span>`;
+ b.querySelector(".code").textContent=s.code;b.querySelector(".rt").textContent=L(s.t);b.querySelector(".rs").textContent=L(s.s);
+ b.querySelector("small").textContent=t("st_"+status(s.id))+"  "+cnt(s.id)+"/4";
+ b.addEventListener("click",()=>openDrawer(s.id));return b;
+}
+function renderCareers(){
+ const host=$("#careerChips");host.innerHTML="";
+ const mk=(id,label)=>{const b=document.createElement("button");b.type="button";b.className="chip";b.setAttribute("aria-pressed",String((state.career||"")===id));b.textContent=label;
+  b.addEventListener("click",()=>{state.career=id;commit({noPulse:true});renderCareers();applyRole()});host.appendChild(b)};
+ mk("",t("role_none"));CAREERS.forEach(c=>mk(c.id,L(c.n)));
+ const pn=$("#careerPanel");const c=CAREERS.find(x=>x.id===state.career);
+ if(!c){pn.className="cpanel empty-panel";pn.innerHTML="";const p=document.createElement("p");p.className="ph";p.textContent=t("role_pick");pn.appendChild(p);return}
+ pn.className="cpanel";const rd=careerReady(c);
+ pn.innerHTML=`<div><h3></h3><p class="cdesc"></p><div class="cready">${Math.round(rd.r*100)}%</div><p class="cready-cap"></p><div class="bar" style="height:8px;margin:14px 0 20px"><i style="width:${rd.r*100}%;background:var(--accent)"></i></div><button type="button" class="btn small ghost" id="roleMap"></button></div><div><p class="rel-title"></p><div class="rows" id="careerRows"></div></div>`;
+ pn.querySelector("h3").textContent=L(c.n);pn.querySelector(".cdesc").textContent=L(c.d);
+ pn.querySelector(".cready-cap").textContent=t("role_ready_cap",{d:rd.d,t:rd.t});
+ const rm=pn.querySelector("#roleMap");rm.textContent=t("role_show_map");
+ rm.addEventListener("click",()=>{zoomTo(null);document.getElementById("map-sec").scrollIntoView({behavior:reduced?"auto":"smooth"})});
+ pn.querySelector(".rel-title").textContent=t("role_keys");
+ const rows=pn.querySelector("#careerRows");c.k.forEach(id=>rows.appendChild(skillRow(sOf(id))));
+}
+
+/* ---------- Library ---------- */
+const TY_ORDER=["report","framework","regulation","guide","paper","course","book","docs","benchmark"];
+const OT_ORDER=["intl","gov","research","academic","company","community","author"];
+const OT_COLOR={intl:"--p2",gov:"--p1",research:"--p3",academic:"--p3",company:"--p4",community:"--accent",author:"--muted"};
+let lib={q:"",ty:"all",ot:"all",sk:"all",sort:"new",mine:false,limit:24};
+function libFlag(id){return state.lib[id]||0}
+function renderLibFilters(){
+ fillSelect($("#libTy"),[["all",t("lib_all_types")],...TY_ORDER.map(k=>[k,`${t("ty_"+k)} (${RES.filter(r=>r.ty===k).length})`])],lib.ty);
+ fillSelect($("#libOt"),[["all",t("lib_all_orgs")],...OT_ORDER.map(k=>[k,`${t("ot_"+k)} (${RES.filter(r=>r.ot===k).length})`])],lib.ot);
+ fillSelect($("#libSk"),[["all",t("lib_all_skills")],...SKILLS.map(s=>[s.id,`${s.code} ${L(s.sh)}`])],lib.sk);
+ fillSelect($("#libSort"),[["new",t("lib_sort_new")],["az",t("lib_sort_az")]],lib.sort);
+ const m=$("#libMine");m.setAttribute("aria-pressed",String(lib.mine));m.textContent=t("lib_mine");
+ if($("#libQ").value!==lib.q)$("#libQ").value=lib.q;
+}
+function libFiltered(){
+ const q=norm(lib.q.trim());
+ let list=RES.filter(r=>(lib.ty==="all"||r.ty===lib.ty)&&(lib.ot==="all"||r.ot===lib.ot)&&(lib.sk==="all"||r.s.includes(lib.sk))&&(!lib.mine||libFlag(r.id)>0));
+ if(q)list=list.filter(r=>norm([r.t,r.o,r.ab,r.d.tr,r.d.en,t("ty_"+r.ty),t("ot_"+r.ot),...r.s.map(id=>sOf(id).sh.tr+" "+sOf(id).sh.en)].join(" ")).includes(q));
+ return list.slice().sort(lib.sort==="az"?(a,b)=>a.t.localeCompare(b.t):(a,b)=>(b.y||0)-(a.y||0)||a.t.localeCompare(b.t));
+}
+function libMetaText(n){const saved=RES.filter(r=>libFlag(r.id)&1).length,read=RES.filter(r=>libFlag(r.id)&2).length;return t("lib_count",{n,t:RES.length})+"   "+t("lib_saved_count",{s:saved,r:read})}
+function renderLibrary(){
+ const list=libFiltered(),grid=$("#libGrid");grid.innerHTML="";
+ $("#libMeta").textContent=libMetaText(list.length);
+ if(!list.length){const p=document.createElement("div");p.className="empty";p.innerHTML=`<p style="margin:0 0 14px"></p><button type="button" class="btn small ghost"></button>`;p.querySelector("p").textContent=t("lib_empty");
+  const b=p.querySelector("button");b.textContent=t("lib_clear");b.addEventListener("click",()=>{lib=Object.assign(lib,{q:"",ty:"all",ot:"all",sk:"all",mine:false,limit:24});renderLibFilters();renderLibrary()});
+  grid.appendChild(p);$("#libMore").hidden=true;return}
+ list.slice(0,lib.limit).forEach(r=>grid.appendChild(resCard(r)));
+ const rest=list.length-lib.limit;$("#libMore").hidden=rest<=0;$("#libMore").textContent=t("lib_more",{n:rest});
+}
+function resCard(r){
+ const el=document.createElement("article");el.className="res";el.style.setProperty("--rc",`var(${OT_COLOR[r.ot]})`);
+ el.innerHTML=`<div class="res-top"><span class="badge" aria-hidden="true"></span><div><h3><a target="_blank" rel="noopener"></a></h3><div class="org"></div></div></div><p></p><div class="tags"></div><div class="res-act"><button type="button" class="ra save"></button><button type="button" class="ra read"></button></div>`;
+ el.querySelector(".badge").textContent=r.ab;
+ const a=el.querySelector("h3 a");a.href=r.u;a.textContent=r.t;
+ el.querySelector(".org").textContent=`${r.o}, ${r.y?r.y:t("evergreen")}${r.lang==="TR"?", Türkçe":""}`;
+ el.querySelector("p").textContent=L(r.d);
+ const tg=el.querySelector(".tags");
+ const tag=(txt,cls)=>{const s=document.createElement("span");s.className="tag"+(cls?" "+cls:"");s.textContent=txt;tg.appendChild(s)};
+ tag(t("ty_"+r.ty),"ty");tag(t("ot_"+r.ot));
+ r.s.slice(0,3).forEach(id=>{const s=sOf(id);const x=document.createElement("button");x.type="button";x.className="tag sk";x.style.color=`var(${pOf(s.p).color})`;x.textContent=`${s.code} ${L(s.sh)}`;x.addEventListener("click",()=>openDrawer(id));tg.appendChild(x)});
+ const sb=el.querySelector(".save"),rb=el.querySelector(".read");
+ const paint=()=>{const f=libFlag(r.id);sb.setAttribute("aria-pressed",String(!!(f&1)));sb.textContent=f&1?t("lib_saved"):t("lib_save");rb.setAttribute("aria-pressed",String(!!(f&2)));rb.textContent=f&2?t("lib_isread"):t("lib_read")};
+ paint();
+ sb.addEventListener("click",()=>{toggleLib(r.id,1);paint();$("#libMeta").textContent=libMetaText(libFiltered().length)});
+ rb.addEventListener("click",()=>{toggleLib(r.id,2);paint();$("#libMeta").textContent=libMetaText(libFiltered().length)});
+ return el;
+}
+function toggleLib(id,bit){const f=libFlag(id)^bit;if(f)state.lib[id]=f;else delete state.lib[id];commit({noPulse:true});if(openSkill)renderDrawerExtra()}
+function libCompact(){return RES.map(r=>`- ${r.t} (${r.o}${r.y?", "+r.y:""}; ${r.ty}; skills ${r.s.map(id=>sOf(id).code).join("/")})`).join("\n")}
+
+/* ---------- Drawer extras ---------- */
+let dtab="obj";
+function setDtab(n){dtab=n;$$("[data-dtab]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.dtab===n)));$("#dpObj").hidden=n!=="obj";$("#dpLearn").hidden=n!=="learn";$("#dpRes").hidden=n!=="res"}
+function renderDrawerExtra(){
+ if(!openSkill)return;const x=SKILLX[openSkill];
+ const cc=$("#dConcepts");cc.innerHTML="";x.k.forEach(k=>{const sp=document.createElement("span");sp.className="concept";sp.textContent=k;cc.appendChild(sp)});
+ $("#dProject").textContent=L(x.pr);$("#dPitfall").textContent=L(x.pit);
+ const rs=RES.filter(r=>r.s.includes(openSkill)).sort((a,b)=>(b.y||0)-(a.y||0)||a.t.localeCompare(b.t));
+ $("#dResTab").textContent=t("d_res",{n:rs.length});
+ const ul=$("#dRes");ul.innerHTML="";
+ rs.forEach(r=>{const li=document.createElement("li");li.innerHTML=`<div><a target="_blank" rel="noopener"></a><span></span></div><button type="button" class="ra save"></button>`;
+  const a=li.querySelector("a");a.href=r.u;a.textContent=r.t;li.querySelector("span").textContent=`${r.o}, ${r.y||t("evergreen")}  |  ${t("ty_"+r.ty)}`;
+  const b=li.querySelector("button");const f=libFlag(r.id);b.setAttribute("aria-pressed",String(!!(f&1)));b.textContent=f&1?t("lib_saved"):t("lib_save");
+  b.addEventListener("click",()=>{toggleLib(r.id,1);renderLibrary()});ul.appendChild(li)});
+ setDtab(dtab);
+}
+
+/* ---------- Agenda ---------- */
+function dateTs(d){const p=d.split("-");return Date.UTC(+p[0],(+p[1]||1)-1,+p[2]||1)}
+function fmtDate(d){const p=d.split("-");const o=p.length===3?{year:"numeric",month:"long",day:"numeric",timeZone:"UTC"}:{year:"numeric",month:"long",timeZone:"UTC"};return new Date(dateTs(d)).toLocaleDateString(lang==="tr"?"tr-TR":"en-GB",o)}
+function renderAgenda(){
+ const nh=$("#nums");nh.innerHTML="";
+ STATS.forEach(s=>{const r=RES.find(x=>x.id===s.r);const a=document.createElement("a");a.className="num";a.href=r.u;a.target="_blank";a.rel="noopener";
+  a.innerHTML=`<b></b><span></span><small></small>`;a.querySelector("b").textContent=L(s.v);a.querySelector("span").textContent=L(s.l);a.querySelector("small").textContent=`${t("src")}: ${r.t}`;nh.appendChild(a)});
+ const tl=$("#tl");tl.innerHTML="";const now=Date.now();
+ TL.forEach(e=>{const r=RES.find(x=>x.id===e.r);const fut=dateTs(e.d)>now;
+  const li=document.createElement("li");li.className="tli"+(fut?" future":"");li.innerHTML=`<time></time><p></p><a target="_blank" rel="noopener"></a>`;
+  const tm=li.querySelector("time");tm.textContent=fmtDate(e.d)+(fut?"  |  "+t("tl_future"):"");tm.setAttribute("datetime",e.d);
+  li.querySelector("p").textContent=L(e.t);const a=li.querySelector("a");a.href=r.u;a.textContent=r.t;tl.appendChild(li)});
+}
+
+/* ---------- Glossary ---------- */
+let glq="";
+function renderGlossary(){
+ const host=$("#gl");host.innerHTML="";const q=norm(glq.trim());
+ const list=GLOSS.slice().sort((a,b)=>LA(a.t).localeCompare(LA(b.t),lang==="tr"?"tr":"en")).filter(g=>!q||norm(g.t.join(" ")+" "+g.d.join(" ")).includes(q));
+ if(!list.length){const p=document.createElement("p");p.className="empty";p.textContent=t("gloss_empty");host.appendChild(p);return}
+ list.forEach(g=>{const d=document.createElement("div");d.className="gli";d.innerHTML=`<dt></dt><dd></dd>`;const dt=d.querySelector("dt");dt.textContent=LA(g.t);
+  const other=lang==="tr"?g.t[1]:g.t[0];if(other!==LA(g.t)){const sm=document.createElement("small");sm.textContent=other;dt.appendChild(sm)}
+  d.querySelector("dd").textContent=LA(g.d);host.appendChild(d)});
+}
+
+/* ---------- i18n additions ---------- */
+Object.assign(I18N.tr,{
+ hero_lede:"Modern geliştiricinin araç kutusu: 4 sütun, 20 beceri, 80 kazanım ve uluslararası kuruluşlardan araştırma enstitülerine, hükümetlerden şirketlere uzanan doğrulanmış bir kaynak kütüphanesi. İlerlemeni işaretle, rolünü seç, YZ mentörden sana özel plan al.",
+ nav_roles:"Roller",nav_lib:"Kütüphane",nav_agenda:"Gündem 2026",nav_gloss:"Sözlük",
+ roles_title:"Rol mercekleri",roles_lede:"Bir rol seç; harita o rolün kritik becerilerini öne çıkarır ve hazırlık düzeyini işaretlediğin kazanımlardan hesaplar.",
+ role_none:"Mercek yok",role_pick:"Bir rol seçtiğinde kritik becerileri, hazırlık yüzdeni ve haritadaki karşılığını burada görürsün.",role_keys:"Kritik beceriler",role_show_map:"Haritada göster",role_ready_cap:"Bu rolün kritik becerilerinde {d} / {t} kazanım tamamlandı.",
+ lib_title:"Kaynak kütüphanesi",lib_lede:"Uluslararası kuruluşlar, hükümet ve düzenleyiciler, araştırma enstitüleri, üniversiteler ve şirketlerden seçilmiş rapor, çerçeve, mevzuat, makale, kılavuz, kurs ve kitaplar. Her kaynak ilgili becerilere bağlı; okuma listen hesabında saklanır.",
+ lib_search:"Kaynak, kuruluş veya konu ara…",lib_all_types:"Tüm türler",lib_all_orgs:"Tüm kuruluş türleri",lib_all_skills:"Tüm beceriler",lib_sort_new:"En yeni",lib_sort_az:"A–Z",lib_mine:"Okuma listem",
+ lib_count:"{n} / {t} kaynak gösteriliyor.",lib_saved_count:"Listende {s}, okunan {r}.",lib_more:"{n} kaynak daha göster",lib_save:"Listeye ekle",lib_saved:"Listede",lib_read:"Okundu olarak işaretle",lib_isread:"Okundu",
+ lib_empty:"Bu filtrelerle eşleşen kaynak yok. Filtreleri temizleyip tekrar dene.",lib_clear:"Filtreleri temizle",evergreen:"sürekli güncel",
+ ty_report:"Rapor",ty_framework:"Çerçeve ve standart",ty_regulation:"Mevzuat ve politika",ty_guide:"Kılavuz",ty_paper:"Akademik makale",ty_course:"Kurs",ty_book:"Kitap",ty_docs:"Dokümantasyon",ty_benchmark:"Benchmark ve veri",
+ ot_intl:"Uluslararası kuruluş",ot_gov:"Hükümet ve düzenleyici",ot_research:"Araştırma enstitüsü",ot_academic:"Üniversite ve akademi",ot_company:"Şirket",ot_community:"Topluluk ve açık standart",ot_author:"Yazar ve uzman",
+ agenda_title:"Gündem 2026",agenda_lede:"Kütüphanedeki kaynaklardan derlenen güncel veriler ve yönetişim takvimi. Her kart ve olay kaynağına bağlanır.",tl_title:"Yönetişim ve standart zaman çizelgesi",tl_future:"planlanan",src:"Kaynak",
+ gloss_title:"Sözlük",gloss_lede:"AI engineering’in temel kavramları, Türkçe ve İngilizce karşılıklarıyla.",gloss_search:"Terim ara…",gloss_empty:"Bu aramayla eşleşen terim yok.",
+ d_learn:"Kavramlar ve proje",d_res:"Kaynaklar ({n})",d_concepts:"Anahtar kavramlar",d_project:"Uygulama projesi",d_pitfall:"Sık yapılan hata",d_lib_all:"Bu becerinin tüm kaynaklarını kütüphanede aç"
+});
+Object.assign(I18N.en,{
+ hero_lede:"The modern developer’s toolkit: 4 pillars, 20 skills, 80 outcomes and a verified library spanning international organizations, research institutes, governments and companies. Track your progress, pick a role, and get a tailored plan from the AI mentor.",
+ nav_roles:"Roles",nav_lib:"Library",nav_agenda:"2026 agenda",nav_gloss:"Glossary",
+ roles_title:"Role lenses",roles_lede:"Pick a role; the map highlights its critical skills and your readiness is calculated from the outcomes you’ve ticked.",
+ role_none:"No lens",role_pick:"Pick a role to see its critical skills, your readiness and how it lights up on the map.",role_keys:"Critical skills",role_show_map:"Show on the map",role_ready_cap:"{d} of {t} outcomes completed in this role’s critical skills.",
+ lib_title:"Resource library",lib_lede:"Curated reports, frameworks, regulation, papers, guides, courses and books from international organizations, governments and regulators, research institutes, universities and companies. Every item links to the skills it supports; your reading list is saved to your account.",
+ lib_search:"Search resources, organizations or topics…",lib_all_types:"All types",lib_all_orgs:"All organization types",lib_all_skills:"All skills",lib_sort_new:"Newest",lib_sort_az:"A–Z",lib_mine:"My reading list",
+ lib_count:"Showing {n} of {t} resources.",lib_saved_count:"{s} on your list, {r} read.",lib_more:"Show {n} more",lib_save:"Add to list",lib_saved:"On my list",lib_read:"Mark as read",lib_isread:"Read",
+ lib_empty:"No resources match these filters. Clear them and try again.",lib_clear:"Clear filters",evergreen:"continuously updated",
+ ty_report:"Report",ty_framework:"Framework & standard",ty_regulation:"Regulation & policy",ty_guide:"Guide",ty_paper:"Research paper",ty_course:"Course",ty_book:"Book",ty_docs:"Documentation",ty_benchmark:"Benchmark & data",
+ ot_intl:"International organization",ot_gov:"Government & regulator",ot_research:"Research institute",ot_academic:"University & academia",ot_company:"Company",ot_community:"Community & open standard",ot_author:"Author & expert",
+ agenda_title:"2026 agenda",agenda_lede:"Current figures and the governance calendar, drawn from the library. Every card and event links to its source.",tl_title:"Governance and standards timeline",tl_future:"scheduled",src:"Source",
+ gloss_title:"Glossary",gloss_lede:"Core AI engineering terms with Turkish and English equivalents.",gloss_search:"Search terms…",gloss_empty:"No terms match this search.",
+ d_learn:"Concepts and project",d_res:"Resources ({n})",d_concepts:"Key concepts",d_project:"Practice project",d_pitfall:"Common pitfall",d_lib_all:"Open all of this skill’s resources in the library"
+});
+
+/* ---------- State ---------- */
+const LS_KEY="aihan-skillmap-v1", LS_PREF="aihan-skillmap-prefs";
+let lang="tr", theme=null;
+let state={checks:{},self:{build:2,swe:2,agents:2,shape:2},plan:"",planAt:0,goal:0,role:3,hours:6,updated:0,lib:{},career:""};
+let pulse={counts:{},learners:0,ready:false};
+const cloud={db:null,uid:null,ref:null,ok:false};
+let filterP="all", filterS="all", query="";
+let openSkill=null, focusPillar=null, flowIdx=0, tab="plan";
+let sampleFn=null, busy=false, ctl=null, chat=[];
+
+const $=s=>document.querySelector(s);
+const $$=s=>Array.from(document.querySelectorAll(s));
+const t=(k,v)=>{let s=(I18N[lang][k]??I18N.tr[k]??k);if(v)for(const x in v)s=s.split("{"+x+"}").join(v[x]);return s};
+const L=o=>o[lang]||o.tr;
+const LA=a=>a[lang==="tr"?0:1];
+const pOf=id=>PILLARS.find(p=>p.id===id);
+const sOf=id=>SKILLS.find(s=>s.id===id);
+const cvar=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function checks(id){const c=state.checks[id];return Array.isArray(c)?c:[false,false,false,false]}
+function cnt(id){return checks(id).filter(Boolean).length}
+function pct(id){return cnt(id)/4}
+function status(id){const c=cnt(id);return c===0?"none":c===4?"done":"learning"}
+function pillarStats(pid){const list=SKILLS.filter(s=>s.p===pid);const d=list.reduce((a,s)=>a+cnt(s.id),0);return{d,t:list.length*4,r:d/(list.length*4)}}
+function totalDone(){return SKILLS.reduce((a,s)=>a+cnt(s.id),0)}
+
+/* ---------- Persistence ---------- */
+function loadLocal(){
+ try{const r=localStorage.getItem(LS_KEY);if(r){const o=JSON.parse(r);if(o&&typeof o==="object")state=Object.assign(state,sanitize(o))}}catch(e){}
+ try{const p=JSON.parse(localStorage.getItem(LS_PREF)||"{}");if(p.lang==="en"||p.lang==="tr")lang=p.lang;else lang=(navigator.language||"tr").toLowerCase().startsWith("tr")?"tr":"en";if(p.theme==="dark"||p.theme==="light")theme=p.theme}catch(e){}
+}
+function sanitize(o){
+ const out={};
+ if(o.checks&&typeof o.checks==="object"){out.checks={};for(const s of SKILLS){const c=o.checks[s.id];if(Array.isArray(c))out.checks[s.id]=[0,1,2,3].map(i=>!!c[i])}}
+ if(o.self&&typeof o.self==="object"){out.self={};for(const p of PILLARS){const v=Number(o.self[p.id]);out.self[p.id]=v>=1&&v<=5?Math.round(v):2}}
+ if(typeof o.plan==="string")out.plan=o.plan.slice(0,20000);
+ ["planAt","updated"].forEach(k=>{if(typeof o[k]==="number")out[k]=o[k]});
+ if(Number.isInteger(o.goal)&&o.goal>=0&&o.goal<GOALS.length)out.goal=o.goal;
+ if(Number.isInteger(o.role)&&o.role>=0&&o.role<ROLES.length)out.role=o.role;
+ if(typeof o.hours==="number"&&o.hours>=2&&o.hours<=20)out.hours=o.hours;
+ if(o.lib&&typeof o.lib==="object"){out.lib={};const ids=new Set(RES.map(r=>r.id));for(const k in o.lib){const v=Number(o.lib[k]);if(ids.has(k)&&v>=1&&v<=3)out.lib[k]=v}}
+ if(typeof o.career==="string"&&(o.career===""||CAREERS.some(c=>c.id===o.career)))out.career=o.career;
+ return out;
+}
+function savePrefs(){try{localStorage.setItem(LS_PREF,JSON.stringify({lang,theme}))}catch(e){}}
+function saveLocal(){try{localStorage.setItem(LS_KEY,JSON.stringify(state))}catch(e){}}
+let cloudTimer=null,pulseTimer=null;
+function commit(opts){
+ state.updated=Date.now(); saveLocal();
+ if(cloud.ok){clearTimeout(cloudTimer);cloudTimer=setTimeout(pushCloud,700)}
+ if(cloud.ok&&!(opts&&opts.noPulse)){clearTimeout(pulseTimer);pulseTimer=setTimeout(writePulse,1500)}
+}
+async function pushCloud(){
+ if(!cloud.ok)return; setSync("saving");
+ try{await cloud.ref.set(JSON.parse(JSON.stringify(state)));setSync("cloud")}
+ catch(e){if(e&&e.code==="unavailable"){setTimeout(()=>cloud.ref.set(JSON.parse(JSON.stringify(state))).then(()=>setSync("cloud"),()=>setSync("local")),800+Math.random()*800)}else{cloud.ok=false;setSync("local")}}
+}
+function writePulse(){
+ if(!cloud.ok||!cloud.db)return;
+ const done=SKILLS.filter(s=>status(s.id)==="done").map(s=>s.id);
+ const learning=SKILLS.filter(s=>status(s.id)==="learning").map(s=>s.id);
+ try{cloud.db.doc("pulse/"+cloud.uid).set({done,learning,t:Date.now()}).catch(()=>{})}catch(e){}
+}
+function subscribePulse(){
+ try{
+  cloud.db.collection("pulse").limit(1000).onSnapshot(snap=>{
+   const counts={};let learners=0;const valid=new Set(SKILLS.map(s=>s.id));
+   snap.docs.forEach(d=>{const v=d.data()||{};const dn=Array.isArray(v.done)?v.done:[];const lr=Array.isArray(v.learning)?v.learning:[];
+    if(dn.length||lr.length)learners++;
+    new Set(dn).forEach(id=>{if(typeof id==="string"&&valid.has(id))counts[id]=(counts[id]||0)+1})});
+   pulse={counts,learners,ready:true};renderPulse();
+  },()=>{});
+ }catch(e){}
+}
+async function initCloud(){
+ setSync("wait");
+ if(!window.claude||typeof window.claude.use!=="function"){setSync("local");return}
+ try{
+  const [db,user]=await Promise.all([window.claude.use("db"),window.claude.use("user")]);
+  if(!db||!user){setSync("local");return}
+  const uid=await user.id(); if(!uid){setSync("local");return}
+  cloud.db=db;cloud.uid=uid;cloud.ref=db.doc("data/users/"+uid+"/progress");
+  const snap=await cloud.ref.get();
+  cloud.ok=true;
+  if(snap.exists){
+   const d=sanitize(snap.data()||{});
+   if((d.updated||0)>(state.updated||0)){state=Object.assign(state,d);saveLocal();renderAll()}
+   else if((state.updated||0)>(d.updated||0)){await pushCloud()}
+  }else if(state.updated){await pushCloud()}
+  setSync("cloud");subscribePulse();
+  if(totalDone()>0)writePulse();
+ }catch(e){cloud.ok=false;setSync("local")}
+}
+let syncMode="wait";
+function setSync(m){syncMode=m;const dot=$("#syncDot"),tx=$("#syncTxt");
+ dot.classList.toggle("cloud",m==="cloud"||m==="saving");
+ tx.textContent=m==="cloud"?t("sync_cloud"):m==="saving"?t("sync_cloud")+"…":m==="wait"?t("sync_wait"):t("sync_local");}
+
+/* ---------- i18n / theme ---------- */
+function applyI18n(){
+ document.documentElement.lang=lang;
+ document.title=t("hero_title")+" | AI’Han Academy";
+ $$("[data-i18n]").forEach(e=>{e.textContent=t(e.dataset.i18n)});
+ $$("[data-i18n-ph]").forEach(e=>{e.placeholder=t(e.dataset.i18nPh)});
+ $$("[data-i18n-aria]").forEach(e=>{e.setAttribute("aria-label",t(e.dataset.i18nAria))});
+ $$(".seg [data-lang]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===lang)));
+}
+function applyTheme(){if(theme)document.documentElement.setAttribute("data-theme",theme);else document.documentElement.removeAttribute("data-theme")}
+function effectiveDark(){return theme?theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches}
+
+/* ---------- Map ---------- */
+const NS="http://www.w3.org/2000/svg", CX=700, CY=550, RX=440, RY=640;
+const FULL=[-60,-90,1520,1190];
+let vb=FULL.slice(), GEO={}, nodes={}, particles=[], firstBuild=true;
+function sv(tag,attrs,parent){const e=document.createElementNS(NS,tag);if(attrs)for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+function polar(r,deg){const a=deg*Math.PI/180;return[CX+r*Math.cos(a),CY+r*Math.sin(a)]}
+function wrap(str,max){const w=str.split(" ");const lines=[];let cur="";for(const x of w){if((cur+" "+x).trim().length>max&&cur){lines.push(cur);cur=x}else cur=(cur+" "+x).trim()}if(cur)lines.push(cur);return lines.slice(0,3)}
+const SLOTS={build:{side:-1,y0:70,dy:92},shape:{side:-1,y0:650,dy:108},swe:{side:1,y0:90,dy:104},agents:{side:1,y0:620,dy:104}};
+const PPOS={build:[-200,-180],swe:[200,-180],agents:[200,180],shape:[-200,180]};
+function computeGeo(){
+ GEO={};
+ for(const p of PILLARS){
+  const o=PPOS[p.id];GEO[p.id]={x:CX+o[0],y:CY+o[1],a:p.angle};
+  const sl=SLOTS[p.id];
+  SKILLS.filter(s=>s.p===p.id).forEach((s,i)=>{const y=sl.y0+sl.dy*i;const k=(y-CY)/RY;const x=CX+sl.side*RX*Math.sqrt(Math.max(0,1-k*k));GEO[s.id]={x,y,side:sl.side}});
+ }
+}
+function textBlock(parent,x,y,lines,anchor,vpos,cls,fill){
+ const tx=sv("text",{x,y,"text-anchor":anchor,class:cls},parent);if(fill)tx.setAttribute("fill",fill);
+ const lh=1.12,n=lines.length;
+ let first=vpos==="above"?-(n-1)*lh-.25:vpos==="below"?.95:-(n-1)*lh/2+.35;
+ lines.forEach((ln,i)=>{const ts=sv("tspan",{x,dy:(i===0?first:lh)+"em"},tx);ts.textContent=ln});
+ return tx;
+}
+function buildMap(){
+ const svg=$("#map");svg.innerHTML="";nodes={};particles=[];computeGeo();
+ const defs=sv("defs",null,svg);
+ const glow=sv("filter",{id:"glow",x:"-80%",y:"-80%",width:"260%",height:"260%"},defs);
+ sv("feGaussianBlur",{stdDeviation:"7",result:"b"},glow);const mg=sv("feMerge",null,glow);sv("feMergeNode",{in:"b"},mg);sv("feMergeNode",{in:"SourceGraphic"},mg);
+ const cg=sv("radialGradient",{id:"cgrad"},defs);sv("stop",{offset:"0%","stop-color":"var(--accent)","stop-opacity":"1"},cg);sv("stop",{offset:"100%","stop-color":"var(--accent)","stop-opacity":".55"},cg);
+
+ const bg=sv("g",{"aria-hidden":"true"},svg);
+ let seed=7;const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;
+ for(let i=0;i<90;i++){sv("circle",{cx:(-60+rnd()*1520).toFixed(1),cy:(-90+rnd()*1190).toFixed(1),r:(rnd()*1.8+.5).toFixed(2),class:"m-star",opacity:(rnd()*.6+.15).toFixed(2)},bg)}
+ [[255,255],[RX,RY*.86],[RX+90,RY*.95]].forEach(([rx,ry])=>sv("ellipse",{cx:CX,cy:CY,rx,ry,class:"m-ring"},bg));
+
+ const edges=sv("g",{"aria-hidden":"true",class:firstBuild&&!reduced?"draw":""},svg);
+ let order=0;
+ for(const p of PILLARS){
+  const g=GEO[p.id],col=`var(${p.color})`;
+  const tr=sv("line",{x1:CX,y1:CY,x2:g.x,y2:g.y,stroke:col,class:"m-trunk","data-p":p.id,pathLength:"1"},edges);tr.style.transitionDelay=(order++*0.08)+"s";
+  for(const s of SKILLS.filter(s=>s.p===p.id)){const q=GEO[s.id];const br=sv("line",{x1:g.x,y1:g.y,x2:q.x,y2:q.y,stroke:col,class:"m-branch","data-p":p.id,pathLength:"1"},edges);br.style.transitionDelay=(0.35+order++*0.045)+"s"}
+ }
+ const pg=sv("g",{"aria-hidden":"true"},svg);
+ if(!reduced){for(let i=0;i<26;i++){const s=SKILLS[i%SKILLS.length];const c=sv("circle",{r:i%3?3:4.5,class:"m-particle",fill:`var(${pOf(s.p).color})`,opacity:"0"},pg);particles.push({el:c,s:s.id,t:Math.random(),v:.0018+Math.random()*.0025})}}
+
+ // center
+ const cgp=sv("g",{"aria-hidden":"true"},svg);
+ sv("circle",{cx:CX,cy:CY,r:92,fill:"var(--accent)",class:"m-center-pulse"},cgp);
+ sv("circle",{cx:CX,cy:CY,r:74,fill:"url(#cgrad)"},cgp);
+ const ct=sv("text",{x:CX,y:CY-6,"text-anchor":"middle",class:"m-ctitle",fill:"var(--on-accent)"},cgp);ct.textContent="AI Eng";
+ nodes.center=sv("text",{x:CX,y:CY+30,"text-anchor":"middle",class:"m-csub",fill:"var(--on-accent)"},cgp);
+
+ // pillars
+ for(const p of PILLARS){
+  const g=GEO[p.id],col=`var(${p.color})`;
+  const grp=sv("g",{class:"m-pnode","data-p":p.id,tabindex:"0",role:"button"},svg);
+  sv("circle",{cx:g.x,cy:g.y,r:54,fill:"var(--map-b)",opacity:".85"},grp);
+  sv("circle",{cx:g.x,cy:g.y,r:46,fill:"none",stroke:"var(--line)","stroke-width":"6"},grp);
+  const pr=sv("circle",{cx:g.x,cy:g.y,r:46,fill:"none",stroke:col,"stroke-width":"6","stroke-linecap":"round",pathLength:"100","stroke-dasharray":"0 100",transform:`rotate(-90 ${g.x} ${g.y})`,class:"m-prog"},grp);
+  sv("circle",{cx:g.x,cy:g.y,r:36,fill:"var(--surface)",stroke:col,"stroke-width":"3",class:"m-pc"},grp);
+  const pc=sv("text",{x:g.x,y:g.y+7,"text-anchor":"middle",class:"m-pct"},grp);
+  const above=g.y<CY;
+  textBlock(grp,g.x,above?g.y-66:g.y+66,wrap(L(p.sh),16),"middle",above?"above":"below","m-plbl",col);
+  nodes[p.id]={pr,pc,grp};
+  grp.addEventListener("click",()=>zoomTo(focusPillar===p.id?null:p.id));
+  grp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();zoomTo(focusPillar===p.id?null:p.id)}});
+ }
+ // skills
+ for(const s of SKILLS){
+  const q=GEO[s.id],col=`var(${pOf(s.p).color})`;
+  const grp=sv("g",{class:"m-node","data-p":s.p,"data-s":s.id,tabindex:"0",role:"button"},svg);
+  sv("circle",{cx:q.x,cy:q.y,r:40,fill:"transparent"},grp);
+  sv("circle",{cx:q.x,cy:q.y,r:23,fill:"none",stroke:"var(--line)","stroke-width":"4"},grp);
+  const pr=sv("circle",{cx:q.x,cy:q.y,r:23,class:"m-prog",stroke:col,pathLength:"100","stroke-dasharray":"0 100",transform:`rotate(-90 ${q.x} ${q.y})`},grp);
+  const core=sv("circle",{cx:q.x,cy:q.y,r:15,class:"m-core",stroke:col,"stroke-width":"3",fill:"var(--surface)"},grp);
+  const anchor=q.side<0?"end":"start";
+  textBlock(grp,q.x+q.side*36,q.y,wrap(L(s.sh),15),anchor,"mid","m-lbl");
+  nodes[s.id]={pr,core,grp};
+  grp.addEventListener("click",()=>openDrawer(s.id));
+  grp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openDrawer(s.id)}});
+ }
+ updateMap();applyFocusClasses();applyRole();
+ if(firstBuild&&!reduced){requestAnimationFrame(()=>requestAnimationFrame(()=>edges.classList.add("drawn")))}
+ firstBuild=false;
+}
+function updateMap(){
+ for(const s of SKILLS){const n=nodes[s.id];if(!n)continue;const p=pct(s.id)*100;const st=status(s.id);
+  n.pr.setAttribute("stroke-dasharray",`${p} 100`);
+  n.core.setAttribute("fill",st==="done"?`var(${pOf(s.p).color})`:"var(--surface)");
+  if(st==="done")n.core.setAttribute("filter","url(#glow)");else n.core.removeAttribute("filter");
+  n.grp.setAttribute("aria-label",`${s.code} ${L(s.t)}: ${t("st_"+st)}`);
+ }
+ for(const p of PILLARS){const n=nodes[p.id];if(!n)continue;const ps=pillarStats(p.id);n.pr.setAttribute("stroke-dasharray",`${ps.r*100} 100`);n.pc.textContent=Math.round(ps.r*100)+"%";n.grp.setAttribute("aria-label",`${t("pillar")} ${p.code}: ${L(p.t)}, ${Math.round(ps.r*100)}%`)}
+ if(nodes.center)nodes.center.textContent=Math.round(totalDone()/80*100)+"%";
+}
+function applyFocusClasses(){
+ const svg=$("#map");
+ if(focusPillar)svg.setAttribute("data-focus",focusPillar);else svg.removeAttribute("data-focus");
+ svg.querySelectorAll("[data-p]").forEach(e=>e.classList.toggle("inf",e.dataset.p===focusPillar));
+ $("#mapReset").classList.toggle("on",!!focusPillar);
+}
+let vbAnim=null;
+function zoomTo(pid){
+ focusPillar=pid;applyFocusClasses();
+ let target=FULL;
+ if(pid){
+  const side=SLOTS[pid].side;const pts=[GEO[pid],...SKILLS.filter(s=>s.p===pid).map(s=>GEO[s.id])];
+  let minx=Math.min(...pts.map(p=>p.x))-(side<0?240:70),maxx=Math.max(...pts.map(p=>p.x))+(side<0?80:240),miny=Math.min(...pts.map(p=>p.y))-90,maxy=Math.max(...pts.map(p=>p.y))+90;
+  let w=maxx-minx,h=maxy-miny;const ar=FULL[2]/FULL[3];
+  if(w/h>ar){const nh=w/ar;miny-=(nh-h)/2;h=nh}else{const nw=h*ar;minx-=(nw-w)/2;w=nw}
+  target=[minx,miny,w,h];
+ }
+ const from=vb.slice(),t0=performance.now(),dur=reduced?0:650;
+ cancelAnimationFrame(vbAnim);
+ const step=now=>{const k=dur?Math.min(1,(now-t0)/dur):1;const e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+  vb=from.map((v,i)=>v+(target[i]-v)*e);$("#map").setAttribute("viewBox",vb.map(v=>v.toFixed(1)).join(" "));
+  if(k<1)vbAnim=requestAnimationFrame(step)};
+ vbAnim=requestAnimationFrame(step);
+}
+function animateParticles(){
+ if(!document.hidden){
+  for(const pa of particles){
+   pa.t+=pa.v;if(pa.t>1){pa.t=0;pa.s=SKILLS[Math.floor(Math.random()*SKILLS.length)].id;pa.el.setAttribute("fill",`var(${pOf(sOf(pa.s).p).color})`)}
+   const s=sOf(pa.s),P=GEO[s.p],Q=GEO[pa.s];let x,y;
+   if(pa.t<.45){const k=pa.t/.45;x=CX+(P.x-CX)*k;y=CY+(P.y-CY)*k}else{const k=(pa.t-.45)/.55;x=P.x+(Q.x-P.x)*k;y=P.y+(Q.y-P.y)*k}
+   const op=Math.sin(Math.PI*pa.t)*(focusPillar&&s.p!==focusPillar?.1:.9);
+   pa.el.setAttribute("cx",x.toFixed(1));pa.el.setAttribute("cy",y.toFixed(1));pa.el.setAttribute("opacity",op.toFixed(2));
+  }
+ }
+ requestAnimationFrame(animateParticles);
+}
+
+/* ---------- Hero meter ---------- */
+function renderMeter(){
+ const d=totalDone(),p=Math.round(d/80*100);
+ $("#meterNum").textContent=t("meter_num",{p});$("#meterCap").textContent=t("meter_cap",{d});
+ const bar=$("#segbar");
+ if(!bar.children.length){for(const pl of PILLARS){const sp=document.createElement("span");sp.style.flex=String(pillarStats(pl.id).t);const i=document.createElement("i");i.style.background=`var(${pl.color})`;i.style.width="0%";sp.appendChild(i);bar.appendChild(sp)}}
+ PILLARS.forEach((pl,ix)=>{const sp=bar.children[ix];sp.title=L(pl.sh);sp.firstChild.style.width=(pillarStats(pl.id).r*100)+"%"});
+}
+function renderPulse(){
+ const el=$("#learnersTxt");
+ if(pulse.ready&&pulse.learners>0){el.hidden=false;el.textContent=t("learners",{n:pulse.learners})}else el.hidden=true;
+ if(openSkill)renderDrawerComm();
+}
+
+/* ---------- Skills list ---------- */
+function buildFilters(){
+ const ch=$("#pchips");ch.innerHTML="";
+ const mk=(id,label,color)=>{const b=document.createElement("button");b.type="button";b.className="chip";b.setAttribute("aria-pressed",String(filterP===id));
+  if(color){const d=document.createElement("i");d.className="dot";d.style.background=`var(${color})`;b.appendChild(d)}
+  b.appendChild(document.createTextNode(label));b.addEventListener("click",()=>{filterP=id;buildFilters();renderSkills()});ch.appendChild(b)};
+ mk("all",t("filter_all"));PILLARS.forEach(p=>mk(p.id,L(p.sh),p.color));
+ const sel=$("#stFilter");sel.innerHTML="";
+ [["all",t("all_status")],["none",t("st_none")],["learning",t("st_learning")],["done",t("st_done")]].forEach(([v,l])=>{const o=document.createElement("option");o.value=v;o.textContent=l;if(v===filterS)o.selected=true;sel.appendChild(o)});
+}
+function norm(s){return s.toLocaleLowerCase(lang==="tr"?"tr":"en").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/ı/g,"i")}
+function renderSkills(){
+ const host=$("#bands");host.innerHTML="";const q=norm(query.trim());let any=false;
+ for(const p of PILLARS){
+  if(filterP!=="all"&&filterP!==p.id)continue;
+  const list=SKILLS.filter(s=>s.p===p.id).filter(s=>filterS==="all"||status(s.id)===filterS).filter(s=>{if(!q)return true;const hay=norm([s.t.tr,s.t.en,s.s.tr,s.s.en,s.code,...s.o.flat()].join(" "));return hay.includes(q)});
+  if(!list.length)continue;any=true;
+  const ps=pillarStats(p.id);
+  const band=document.createElement("div");band.className="band";
+  band.innerHTML=`<div class="band-head"><h3><span class="pn" style="background:var(${p.color})">${p.code}</span><span></span></h3><p></p><div class="bp"></div><div class="bar" style="margin-top:8px"><i style="width:${ps.r*100}%;background:var(${p.color})"></i></div></div><div class="rows"></div>`;
+  band.querySelector("h3 span:last-child").textContent=L(p.t);
+  band.querySelector(".band-head p").textContent=L(p.d);
+  band.querySelector(".bp").textContent=t("skill_count",{n:SKILLS.filter(s=>s.p===p.id).length})+"  /  "+t("band_prog",{d:ps.d,t:ps.t});
+  const rows=band.querySelector(".rows");
+  for(const s of list){
+   const b=document.createElement("button");b.type="button";b.className="row";
+   b.innerHTML=`<span class="code" style="color:var(${p.color})"></span><span><span class="rt"></span><span class="rs"></span></span><span class="rm"><small></small><span class="bar"><i style="width:${pct(s.id)*100}%;background:var(${p.color})"></i></span></span>`;
+   b.querySelector(".code").textContent=s.code;b.querySelector(".rt").textContent=L(s.t);b.querySelector(".rs").textContent=L(s.s);
+   b.querySelector("small").textContent=t("st_"+status(s.id))+"  "+cnt(s.id)+"/4";
+   b.addEventListener("click",()=>openDrawer(s.id));rows.appendChild(b);
+  }
+  host.appendChild(band);
+ }
+ if(!any){const e=document.createElement("p");e.className="empty";e.textContent=t("no_results");host.appendChild(e)}
+}
+
+/* ---------- Drawer ---------- */
+let lastFocus=null;
+function openDrawer(id){
+ lastFocus=document.activeElement;openSkill=id;renderDrawer();
+ $("#scrim").classList.add("on");$("#drawer").classList.add("on");$("#drawer").scrollTop=0;
+ setTimeout(()=>$("#dClose").focus(),60);
+}
+function closeDrawer(){openSkill=null;$("#scrim").classList.remove("on");$("#drawer").classList.remove("on");if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+function renderDrawer(){
+ if(!openSkill)return;const s=sOf(openSkill),p=pOf(s.p);
+ $("#dDot").style.background=`var(${p.color})`;$("#dPillar").textContent=`${t("pillar")} ${p.code}: ${L(p.sh)}`;
+ $("#dCode").textContent=s.code;$("#dCode").style.color=`var(${p.color})`;
+ $("#dTitle").textContent=L(s.t);$("#dSum").textContent=L(s.s);
+ $("#dRing").setAttribute("stroke",`var(${p.color})`);
+ const ul=$("#dChecks");ul.innerHTML="";
+ s.o.forEach((o,i)=>{const li=document.createElement("li");const lab=document.createElement("label");lab.className="ck";
+  lab.innerHTML=`<input type="checkbox"><span class="box"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span class="tx"></span>`;
+  const inp=lab.querySelector("input");inp.checked=checks(s.id)[i];lab.querySelector(".tx").textContent=LA(o);
+  const box=lab.querySelector(".box");const paint=()=>{box.style.background=inp.checked?`var(${p.color})`:"transparent";box.style.borderColor=inp.checked?`var(${p.color})`:""};paint();
+  inp.addEventListener("change",()=>{const c=checks(s.id).slice();c[i]=inp.checked;state.checks[s.id]=c;paint();commit();onProgressChange()});
+  li.appendChild(lab);ul.appendChild(li)});
+ const idx=SKILLS.indexOf(s);
+ const prev=SKILLS[(idx-1+SKILLS.length)%SKILLS.length],next=SKILLS[(idx+1)%SKILLS.length];
+ $("#dPrev").textContent=t("d_prev");$("#dPrev").title=L(prev.t);$("#dNext").textContent=t("d_next");$("#dNext").title=L(next.t);
+ $("#dAsk").disabled=!sampleFn;
+ renderDrawerProgress();renderDrawerComm();renderDrawerExtra();
+}
+function renderDrawerProgress(){if(!openSkill)return;const c=cnt(openSkill);$("#dRing").setAttribute("stroke-dasharray",`${c*25} 100`);$("#dStatus").textContent=t("st_"+status(openSkill));$("#dCount").textContent=t("d_count",{d:c})}
+function renderDrawerComm(){const el=$("#dComm");if(!openSkill||!pulse.ready){el.hidden=true;return}el.hidden=false;const n=pulse.counts[openSkill]||0;el.textContent=n?t("d_comm",{n}):t("d_comm0")}
+function stepDrawer(d){const i=SKILLS.findIndex(s=>s.id===openSkill);openSkill=SKILLS[(i+d+SKILLS.length)%SKILLS.length].id;renderDrawer();$("#drawer").scrollTop=0}
+
+/* ---------- Flow ---------- */
+function renderFlow(){
+ const host=$("#flowSteps");host.innerHTML="";
+ FLOW.forEach((f,i)=>{const b=document.createElement("button");b.type="button";b.className="fstep";b.setAttribute("role","tab");b.setAttribute("aria-selected",String(i===flowIdx));b.id="fs"+i;
+  b.innerHTML=`<span class="fn">${i+1}</span><span class="ft"></span>`;b.querySelector(".ft").textContent=L(f.t);
+  b.addEventListener("click",()=>{flowIdx=i;renderFlow()});
+  b.addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key==="ArrowLeft"){flowIdx=(flowIdx+(e.key==="ArrowRight"?1:-1)+3)%3;renderFlow();$("#fs"+flowIdx).focus()}});
+  host.appendChild(b)});
+ const f=FLOW[flowIdx],pn=$("#flowPanel");pn.setAttribute("aria-labelledby","fs"+flowIdx);
+ pn.innerHTML=`<div><h3></h3><p></p><ul></ul></div><div><p class="rel-title"></p><div class="rel"></div><p class="fnote"></p></div>`;
+ pn.querySelector("h3").textContent=L(f.t);pn.querySelector("p").textContent=L(f.s);
+ const ul=pn.querySelector("ul");f.items.forEach(it=>{const li=document.createElement("li");li.textContent=LA(it);ul.appendChild(li)});
+ pn.querySelector(".rel-title").textContent=t("flow_rel");pn.querySelector(".fnote").textContent=t("flow_note");
+ const rel=pn.querySelector(".rel");f.rel.forEach(id=>{const s=sOf(id),p=pOf(s.p);const b=document.createElement("button");b.type="button";b.className="chip";
+  const d=document.createElement("i");d.className="dot";d.style.background=`var(${p.color})`;b.appendChild(d);b.appendChild(document.createTextNode(`${s.code} ${L(s.sh)}`));
+  b.addEventListener("click",()=>openDrawer(id));rel.appendChild(b)});
+}
+
+/* ---------- Profile / radar ---------- */
+function renderSliders(){
+ const host=$("#sliders");host.innerHTML="";
+ for(const p of PILLARS){
+  const d=document.createElement("div");d.className="sl";
+  d.innerHTML=`<label for="sl-${p.id}"><span></span><span></span></label><input type="range" id="sl-${p.id}" min="1" max="5" step="1">`;
+  const inp=d.querySelector("input");inp.value=state.self[p.id]||2;inp.style.accentColor=`var(${p.color})`;
+  const [a,b]=d.querySelectorAll("label span");a.textContent=L(p.sh);
+  const upd=()=>{b.textContent=`${inp.value}/5  ${LA(LEVELS[inp.value-1])}`};upd();
+  inp.addEventListener("input",()=>{state.self[p.id]=Number(inp.value);upd();renderRadar()});
+  inp.addEventListener("change",()=>commit({noPulse:true}));
+  host.appendChild(d);
+ }
+}
+function renderRadar(){
+ const svg=$("#radar");svg.innerHTML="";const cx=180,cy=175,R=128;const angs=[-90,0,90,180];
+ const pt=(i,v)=>{const a=angs[i]*Math.PI/180;return[cx+R*v*Math.cos(a),cy+R*v*Math.sin(a)]};
+ for(let k=1;k<=5;k++){sv("polygon",{points:angs.map((_,i)=>pt(i,k/5).join(",")).join(" "),class:"r-grid"},svg)}
+ angs.forEach((_,i)=>{const [x,y]=pt(i,1);sv("line",{x1:cx,y1:cy,x2:x,y2:y,class:"r-grid"},svg)});
+ const selfV=PILLARS.map(p=>(state.self[p.id]||1)/5),doneV=PILLARS.map(p=>Math.max(.02,pillarStats(p.id).r));
+ const poly=(vals,col,op)=>{sv("polygon",{points:vals.map((v,i)=>pt(i,v).join(",")).join(" "),fill:col,"fill-opacity":op,stroke:col,"stroke-width":"2.5","stroke-linejoin":"round",style:"transition:all .4s"},svg);vals.forEach((v,i)=>{const [x,y]=pt(i,v);sv("circle",{cx:x,cy:y,r:4.5,fill:col},svg)})};
+ poly(selfV,"var(--accent)",".14");poly(doneV,"var(--p2)",".22");
+ PILLARS.forEach((p,i)=>{const [x,y]=pt(i,1.13);const anchor=i===1?"start":i===3?"end":"middle";const vpos=i===0?"above":i===2?"below":"mid";
+  textBlock(svg,x,y,wrap(L(p.sh),13),anchor,vpos,"r-lbl",`var(${p.color})`)});
+ svg.setAttribute("aria-label",PILLARS.map(p=>`${L(p.sh)}: ${state.self[p.id]}/5, ${Math.round(pillarStats(p.id).r*100)}%`).join("; "));
+ let low=null;for(const p of PILLARS){const r=pillarStats(p.id).r;if(r<1&&(!low||r<low.r))low={p,r}}
+ $("#gapHint").textContent=low?t("gap_hint",{p:L(low.p.sh),c:Math.round(low.r*100)}):t("gap_all");
+}
+
+/* ---------- Mentor ---------- */
+function fillSelect(sel,opts,val){sel.innerHTML="";opts.forEach(([v,l])=>{const o=document.createElement("option");o.value=v;o.textContent=l;if(String(v)===String(val))o.selected=true;sel.appendChild(o)})}
+let focusVal="auto";
+function renderMentorForm(){
+ fillSelect($("#goal"),GOALS.map((g,i)=>[i,LA(g)]),state.goal);
+ fillSelect($("#role"),ROLES.map((g,i)=>[i,LA(g)]),state.role);
+ fillSelect($("#focus"),[["auto",t("focus_auto")],...SKILLS.map(s=>[s.id,`${s.code} ${L(s.t)}`])],focusVal);
+ $("#hours").value=state.hours;$("#hoursLbl").textContent=t("hours",{h:state.hours});
+ $("#planBtn").textContent=state.plan?t("regen_plan"):t("gen_plan");
+}
+function renderPlan(){
+ const out=$("#planOut");
+ if(busy&&tab==="plan")return;
+ if(state.plan){out.innerHTML=md(state.plan);$("#planMeta").textContent=state.planAt?t("plan_meta",{d:new Date(state.planAt).toLocaleString(lang==="tr"?"tr-TR":"en-GB",{dateStyle:"medium",timeStyle:"short"})}):""}
+ else{out.innerHTML=`<p class="ph"></p>`;out.querySelector(".ph").textContent=t("plan_empty");$("#planMeta").textContent=""}
+}
+function renderChat(){
+ const host=$("#chat");host.innerHTML="";
+ if(!chat.length){const p=document.createElement("p");p.className="ph";p.style.color="var(--muted)";p.style.margin="8px";p.textContent=t("chat_empty");host.appendChild(p);return}
+ chat.forEach(m=>{const d=document.createElement("div");d.className="msg "+m.role+(m.role==="assistant"?" md":"");if(m.role==="user")d.textContent=m.content;else d.innerHTML=m.content?md(m.content):`<p class="thinking">${esc(t("thinking"))}</p>`;host.appendChild(d)});
+ host.scrollTop=host.scrollHeight;
+}
+function progressSummary(){
+ return PILLARS.map(p=>{const ps=pillarStats(p.id);return `${p.t.en} (self-rating ${state.self[p.id]}/5, ${ps.d}/${ps.t} outcomes):\n`+SKILLS.filter(s=>s.p===p.id).map(s=>{const c=checks(s.id);const missing=s.o.filter((_,i)=>!c[i]).map(o=>o[1]);return `  - ${s.code} ${s.t.en}: ${cnt(s.id)}/4`+(missing.length&&missing.length<4?` (missing: ${missing.join("; ")})`:"")}).join("\n")}).join("\n");
+}
+function langName(){return lang==="tr"?"Turkish":"English"}
+function buildPlanPrompt(){
+ const focus=focusVal!=="auto"?sOf(focusVal):null;
+ return `You are a senior AI engineering mentor at AI’Han Academy, a Turkish learning community. Write the whole answer in ${langName()}.
+
+Learner:
+- Goal: ${GOALS[state.goal][1]}
+- Current role: ${ROLES[state.role][1]}
+- Weekly time budget: ${state.hours} hours
+
+Progress on the AI Engineering Skills Map (4 pillars, 20 skills, 4 outcomes each):
+${progressSummary()}
+
+${focus?`Focus skill chosen by the learner: ${focus.code} ${focus.t.en}. Build the plan around it, pulling in prerequisites when needed.`:`Pick the 2–3 skills that matter most for the goal and where progress is lowest; say which you picked and why in one sentence.`}
+
+Write a practical 4-week learning plan in Markdown:
+1. Start with a short paragraph diagnosing where the learner stands.
+2. Then one heading per week (localized, e.g. "## 1. Hafta: ..." in Turkish or "## Week 1: ..." in English) with a short theme.
+3. Under each week: 3–5 bullet tasks with estimated hours that add up to the weekly budget, including one hands-on mini project, and a final bullet starting with "${lang==="tr"?"**Bitti sayılır:**":"**Done when:**"}" giving a concrete checkpoint tied to the map outcomes.
+4. End with "## ${lang==="tr"?"Sonraki adım":"Next step"}" and a single sentence.
+Do not include URLs. In each week, recommend 1–2 readings chosen only from the curated library below, quoting their exact titles and organizations. Keep it under 520 words.
+
+Curated library (international organizations, governments, research institutes, universities, companies):
+${libCompact()}`;
+}
+function chatInput(){
+ const pre=`You are AI’Han Academy’s AI engineering mentor. Answer in ${langName()}, concisely (under 250 words unless asked for more), in Markdown. Be practical and concrete; no URLs. When you recommend reading, choose only from the curated library below and cite exact titles and organizations. Learner context: goal "${GOALS[state.goal][1]}", role "${ROLES[state.role][1]}". Progress:\n${progressSummary()}\n\nCurated library:\n${libCompact()}\n\nLearner’s question:\n`;
+ const turns=chat.filter(m=>m.content).map(m=>({role:m.role,content:m.content}));
+ if(turns.length&&turns[0].role==="user")turns[0]={role:"user",content:pre+turns[0].content};
+ while(turns.length&&turns[turns.length-1].role!=="user")turns.pop();
+ return turns.slice(-12);
+}
+function errMsg(e){const c=e&&e.code;if(c==="not_granted"||c==="sampling_disabled"||c==="not_declared")return t("err_not_granted");if(c==="rate_limited")return t("err_rate");if(c==="cancelled")return t("stopped");return t("err_generic")}
+function setBusy(b){busy=b;$("#planBtn").disabled=b||!sampleFn;$("#askBtn").disabled=b||!sampleFn;$("#planStop").hidden=!(b&&tab==="plan");$("#askStop").hidden=!(b&&tab==="ask");$("#dAsk").disabled=b||!sampleFn}
+async function runPlan(){
+ if(!sampleFn||busy)return;ctl=new AbortController();setBusy(true);
+ const out=$("#planOut");out.innerHTML=`<p class="thinking">${esc(t("thinking"))}</p>`;$("#planMeta").textContent="";
+ try{const r=await sampleFn(buildPlanPrompt(),{onText:({text})=>{out.innerHTML=md(text)},signal:ctl.signal,modelTier:"default",cache:false});
+  if(r&&r.text){state.plan=r.text;state.planAt=Date.now();commit({noPulse:true})}
+  setBusy(false);renderPlan();renderMentorForm();
+ }catch(e){setBusy(false);const keep=e&&e.text?md(e.text):"";out.innerHTML=keep+`<p class="ph" style="color:var(--muted)">${esc(errMsg(e))}</p>`}
+}
+async function runAsk(text){
+ const q=(text??$("#askIn").value).trim();if(!q||!sampleFn||busy)return;
+ $("#askIn").value="";chat.push({role:"user",content:q});const a={role:"assistant",content:""};chat.push(a);renderChat();
+ ctl=new AbortController();setBusy(true);
+ const input=chatInput();
+ const bubble=$("#chat").lastElementChild;
+ try{const r=await sampleFn(input,{onText:({text})=>{a.content=text;bubble.innerHTML=md(text);$("#chat").scrollTop=$("#chat").scrollHeight},signal:ctl.signal,modelTier:"default",cache:false});a.content=r.text||a.content}
+ catch(e){a.content=(e&&e.text?e.text+"\n\n":"")+"_"+errMsg(e)+"_"}
+ setBusy(false);renderChat();
+}
+function setTab(name){
+ tab=name;$$(".tab").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.tab===name)));
+ $("#panePlan").hidden=name!=="plan";$("#paneAsk").hidden=name!=="ask";setBusy(busy);
+}
+async function initSample(){
+ if(!window.claude||typeof window.claude.use!=="function"){mentorOff();return}
+ try{const s=await window.claude.use("sample");if(!s){mentorOff();return}sampleFn=s;$("#mentorOff").hidden=true;setBusy(false)}catch(e){mentorOff()}
+}
+function mentorOff(){sampleFn=null;const el=$("#mentorOff");el.hidden=false;el.textContent=t("mentor_off");setBusy(false)}
+
+/* ---------- Markdown ---------- */
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function inline(s){return esc(s).replace(/`([^`]+)`/g,"<code>$1</code>").replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>").replace(/(^|[^*\w])\*([^*\n]+)\*/g,"$1<em>$2</em>").replace(/(^|[^_\w])_([^_\n]+)_/g,"$1<em>$2</em>")}
+function md(src){
+ const lines=String(src).split(/\r?\n/);let html="",list=null;const close=()=>{if(list){html+=`</${list}>`;list=null}};
+ for(const raw of lines){const l=raw.replace(/\s+$/,"");let m;
+  if(!l.trim()){close();continue}
+  if((m=l.match(/^(#{1,6})\s+(.*)/))){close();const lv=Math.min(6,m[1].length+2);html+=`<h${lv}>${inline(m[2])}</h${lv}>`;continue}
+  if((m=l.match(/^\s*[-*•]\s+(.*)/))){if(list!=="ul"){close();html+="<ul>";list="ul"}html+=`<li>${inline(m[1])}</li>`;continue}
+  if((m=l.match(/^\s*\d+[.)]\s+(.*)/))){if(list!=="ol"){close();html+="<ol>";list="ol"}html+=`<li>${inline(m[1])}</li>`;continue}
+  if(/^\s*(---|\*\*\*)\s*$/.test(l)){close();continue}
+  close();html+=`<p>${inline(l)}</p>`}
+ close();return html;
+}
+
+/* ---------- Report ---------- */
+function buildReport(){
+ const date=new Date().toLocaleDateString(lang==="tr"?"tr-TR":"en-GB",{dateStyle:"long"});
+ let s=`# ${t("report_title")}\n\n${date}\n\n${t("meter_num",{p:Math.round(totalDone()/80*100)})}, ${t("meter_cap",{d:totalDone()})}\n\n`;
+ for(const p of PILLARS){const ps=pillarStats(p.id);s+=`## ${p.code}. ${L(p.t)}\n\n${t("radar_self")}: ${state.self[p.id]}/5 | ${t("band_prog",{d:ps.d,t:ps.t})}\n\n`;
+  for(const sk of SKILLS.filter(x=>x.p===p.id)){s+=`### ${sk.code} ${L(sk.t)} (${t("st_"+status(sk.id))})\n\n`;sk.o.forEach((o,i)=>{s+=`- [${checks(sk.id)[i]?"x":" "}] ${LA(o)}\n`});s+="\n"}}
+ const mine=RES.filter(r=>libFlag(r.id));
+ if(mine.length){s+=`## ${t("lib_mine")}\n\n`;mine.forEach(r=>{s+=`- [${libFlag(r.id)&2?"x":" "}] ${r.t} (${r.o}${r.y?", "+r.y:""}): ${r.u}\n`});s+="\n"}
+ if(state.plan)s+=`---\n\n## ${t("tab_plan")}\n\n${state.plan}\n\n`;
+ s+=`---\n\n© 2026 Ayhan Bozkurt — AI’Han Academy\nhttps://ayhanbzkrt.github.io/benaihan/\n`;
+ return s;
+}
+async function exportReport(){
+ const data=buildReport(),filename=lang==="tr"?"ai-engineering-ilerleme-raporu.md":"ai-engineering-progress-report.md";
+ try{
+  const dl=window.claude&&typeof window.claude.use==="function"?await window.claude.use("downloads"):null;
+  if(dl){await dl.save({filename,data});toast(t("downloaded"));return}
+ }catch(e){if(e&&(e.code==="cancelled"||e.code==="declined"||e.code==="user_declined"))return}
+ try{await navigator.clipboard.writeText(data);toast(t("copied"))}catch(e){toast(t("export_fail"))}
+}
+let toastT=null;function toast(m){const el=$("#toast");el.textContent=m;el.classList.add("on");clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove("on"),2600)}
+
+/* ---------- Orchestration ---------- */
+function onProgressChange(){updateMap();renderMeter();renderSkills();renderRadar();renderDrawerProgress();renderCareers()}
+function renderAll(){
+ applyI18n();buildMap();renderMeter();buildFilters();renderSkills();renderFlow();renderSliders();renderRadar();renderMentorForm();renderPlan();renderChat();renderPulse();renderCareers();renderLibFilters();renderLibrary();renderAgenda();renderGlossary();setSync(syncMode);
+ if(!sampleFn&&!$("#mentorOff").hidden)$("#mentorOff").textContent=t("mentor_off");
+ if(openSkill)renderDrawer();
+}
+function bind(){
+ $$(".seg [data-lang]").forEach(b=>b.addEventListener("click",()=>{if(lang===b.dataset.lang)return;lang=b.dataset.lang;savePrefs();renderAll()}));
+ $("#themeBtn").addEventListener("click",()=>{theme=effectiveDark()?"light":"dark";applyTheme();savePrefs()});
+ $("#mapReset").addEventListener("click",()=>zoomTo(null));
+ $("#q").addEventListener("input",e=>{query=e.target.value;renderSkills()});
+ $("#stFilter").addEventListener("change",e=>{filterS=e.target.value;renderSkills()});
+ $("#scrim").addEventListener("click",closeDrawer);$("#dClose").addEventListener("click",closeDrawer);
+ $("#dPrev").addEventListener("click",()=>stepDrawer(-1));$("#dNext").addEventListener("click",()=>stepDrawer(1));
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&openSkill)closeDrawer()});
+ $("#drawer").addEventListener("keydown",e=>{if(e.key!=="Tab")return;const f=$$("#drawer button:not([disabled]), #drawer input, #drawer a[href]").filter(e=>e.offsetParent!==null);if(!f.length)return;const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}});
+ $("#dAsk").addEventListener("click",()=>{const s=sOf(openSkill);closeDrawer();setTab("ask");document.getElementById("mentor").scrollIntoView({behavior:reduced?"auto":"smooth"});runAsk(t("ask_skill_q",{s:L(s.t)}))});
+ $$(".tab").forEach(b=>b.addEventListener("click",()=>setTab(b.dataset.tab)));
+ $("#goal").addEventListener("change",e=>{state.goal=Number(e.target.value);commit({noPulse:true})});
+ $("#role").addEventListener("change",e=>{state.role=Number(e.target.value);commit({noPulse:true})});
+ $("#hours").addEventListener("input",e=>{state.hours=Number(e.target.value);$("#hoursLbl").textContent=t("hours",{h:state.hours})});
+ $("#hours").addEventListener("change",()=>commit({noPulse:true}));
+ $("#focus").addEventListener("change",e=>{focusVal=e.target.value});
+ $("#planBtn").addEventListener("click",runPlan);
+ $("#planStop").addEventListener("click",()=>ctl&&ctl.abort());$("#askStop").addEventListener("click",()=>ctl&&ctl.abort());
+ $("#askBtn").addEventListener("click",()=>runAsk());
+ $("#askIn").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey&&!e.isComposing){e.preventDefault();runAsk()}});
+ $("#askClear").addEventListener("click",()=>{if(busy)return;chat=[];renderChat()});
+ $("#exportBtn").addEventListener("click",exportReport);
+ let armed=null;
+ $("#resetBtn").addEventListener("click",e=>{const b=e.currentTarget;
+  if(!armed){b.textContent=t("reset_confirm");armed=setTimeout(()=>{armed=null;b.textContent=t("reset")},4000);return}
+  clearTimeout(armed);armed=null;b.textContent=t("reset");
+  state.checks={};state.self={build:2,swe:2,agents:2,shape:2};state.plan="";state.planAt=0;commit();
+  renderSliders();onProgressChange();renderPlan();renderMentorForm();toast(t("reset_done"))});
+ // v2 bindings
+ $$("[data-dtab]").forEach(b=>b.addEventListener("click",()=>setDtab(b.dataset.dtab)));
+ $("#dLibLink").addEventListener("click",()=>{const id=openSkill;closeDrawer();Object.assign(lib,{sk:id,ty:"all",ot:"all",q:"",mine:false,limit:24});renderLibFilters();renderLibrary();document.getElementById("library").scrollIntoView({behavior:reduced?"auto":"smooth"})});
+ $("#libQ").addEventListener("input",e=>{lib.q=e.target.value;lib.limit=24;renderLibrary()});
+ [["#libTy","ty"],["#libOt","ot"],["#libSk","sk"],["#libSort","sort"]].forEach(([sel,k])=>$(sel).addEventListener("change",e=>{lib[k]=e.target.value;lib.limit=24;renderLibrary()}));
+ $("#libMine").addEventListener("click",e=>{lib.mine=!lib.mine;lib.limit=24;e.currentTarget.setAttribute("aria-pressed",String(lib.mine));renderLibrary()});
+ $("#libMore").addEventListener("click",()=>{lib.limit+=24;renderLibrary()});
+ $("#glQ").addEventListener("input",e=>{glq=e.target.value;renderGlossary()});
+ // nav highlight
+ const secs=["map-sec","skills","roles","flow","library","agenda","profile","mentor","glossary"].map(id=>document.getElementById(id));
+ const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){$$(".nav a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+en.target.id))}})},{rootMargin:"-45% 0px -50% 0px"});
+ secs.forEach(s=>io.observe(s));
+ matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{});
+}
+
+loadLocal();applyTheme();bind();renderAll();setBusy(false);
+if(!reduced)requestAnimationFrame(animateParticles);
+initCloud();initSample();
+})();
+</script>
+</body>
+</html>
